@@ -161,6 +161,12 @@ img.ornament-top {
 	{
 		display: none;
 	}
+    .boxtron{
+        height: auto !important;
+    }
+    .row.boxwrap {
+        padding-bottom: 50px;
+    }
 }
 
 a:hover

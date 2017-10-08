@@ -17,7 +17,7 @@ $(document).ready(function(){
 		
 	 	$('.container').delay(2000).slideUp(1000,function(){	
 		 		
-	 		$('.container').load('page/page1.html').slideDown(1000);
+	 		$('.container.body').load('page/page1.html').slideDown(1000);
 	 	});
 
 	 });
