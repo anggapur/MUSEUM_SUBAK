@@ -35,4 +35,22 @@ $(document).ready(function(){
 		}, 1500);
 
 	 });
+
+	 $('button.imagesGallery').click(function(){
+	 	setTimeout(function(){
+	 		$('.loading').fadeIn("slow" , function(){
+	 			$('.container.body').hide();
+		  		window.location.href = "galeri-foto.html";
+		  	});
+		}, 500);
+	 });
+
+	 $('button.videosGallery').click(function(){
+	 	setTimeout(function(){
+	 		$('.loading').fadeIn("slow" , function(){
+	 			$('.container.body').hide();
+		  		window.location.href = "galeri-video.html";
+		  	});
+		}, 500);
+	 });
 });

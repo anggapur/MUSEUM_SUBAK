@@ -5,18 +5,18 @@ html,body
 
 .w100
 {
-	width: 100%;
+    width: 100%;
 }
 .w200
 {
-	width: 300px;
-	height: 300px;
+    width: 300px;
+    height: 300px;
 }
 body.index
 {
-	 background: url(../source/bg2.jpg); 
-	background-size: cover;
-	background-attachment: fixed;
+     background: url(../source/bg2.jpg); 
+    background-size: cover;
+    background-attachment: fixed;
 }
 body.index:before {
     content: 'Ayoay';
@@ -29,14 +29,14 @@ body.index:before {
 }
 body.index h1,body.index p.h4
 {
-	color: white;
-	z-index: 99999;
-	position: relative;
+    color: white;
+    z-index: 99999;
+    position: relative;
 }
 
 img.img-fluid-logo
 {
-	width: 120px;
+    width: 120px;
     margin-bottom: 5px;
     z-index: 99999;
     position: relative;
@@ -50,12 +50,12 @@ body.index h1 {
 }
 .row
 {
-	z-index: 999;
+    z-index: 999;
 }
 
 body.index,html
 {
-	
+    
 height: 100%;
 }
 body.index .container {
@@ -69,7 +69,7 @@ body.index .container {
 body.index p.h4:hover,
 body.index .img-fluid-logo:hover
 {
-	cursor: pointer;
+    cursor: pointer;
 }
 /*ornameny style*/
 img.ornament-left {
@@ -143,24 +143,24 @@ img.ornament-top {
 /*responsive*/
 @media only screen and (max-width: 960px)
 {
-	body.index{
-		overflow-y: scroll;
-	}
-	body.index .container {
-	     top: 0; 
-	     position: relative; 
-	     transform: none; 
-	}
-	img.ornament-left,img.ornament-right{
-		display: none;
-	}
-	body.index:before {
-		opacity: 0;
-	}
-	.cover
-	{
-		display: none;
-	}
+    body.index{
+        overflow-y: scroll;
+    }
+    body.index .container {
+         top: 0; 
+         position: relative; 
+         transform: none; 
+    }
+    img.ornament-left,img.ornament-right{
+        display: none;
+    }
+    body.index:before {
+        opacity: 0;
+    }
+    .cover
+    {
+        display: none;
+    }
     .boxtron{
         height: auto !important;
     }
@@ -238,8 +238,129 @@ button:hover
     width: 100%;
     padding-bottom: 15px;
 }
-.container-fluid.btn-detail-collection {
+.container-fluid.btn-detail-collection  {
     z-index: 99996;
     position: absolute;
     bottom: 20px;
 }
+
+.detail img.rounded.img-fluid {
+    width: 100%;
+    min-height: 90px;
+    max-height: 90px;
+}
+
+/*DETAIL IMAGE STYLE*/
+.boxglass {
+    /* background: rgba(255,255,255,0.5); */
+    padding: 13px 13px 5px 13px;
+    position: relative;
+}
+
+.blurry {
+    background: rgba(255,255,255,0.5); */
+    width:;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    filter:blur(2px);
+}
+
+.boxglass img.rounded.img-fluid, .boxglass .title{
+    position: relative;
+    z-index: 9999;
+}
+.boxglass .title
+{
+    padding-top:7px;
+}
+
+.gallery .col-sm-2
+{
+    margin-bottom: 20px;
+    padding: 0px 10px;
+}
+.alert.alert-light {
+    padding: 3px 0px 3px 9px;
+    background: rgba(255,255,255,0.5);
+    color: black;
+    border-color: rgba(255,255,255,0);
+}
+
+.gallery .row.boxwrap {
+    height: 450px;
+    overflow-y: scroll;
+}
+
+
+
+
+.gallery ::-webkit-scrollbar
+{
+    width: 2px;
+    background-color: rgba(245, 245, 245,0.4);
+    
+}
+
+.gallery ::-webkit-scrollbar-thumb
+{
+    background-color: #ffffff;
+}
+
+.videosgallery #next i.fa.fa-forward {
+    transform: rotate(90deg);
+}
+
+.videosgallery #prev i.fa.fa-backward {
+    transform: rotate(90deg);
+}
+
+#player{
+    width: 100%;
+}
+.videosgallery .button-collections button {
+    background: #ddd;
+    border-color: #ddd;
+}
+
+.col-sm-4.vidlist > .row {
+    padding: 10px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.col-sm-4.imgwrap {
+    padding-right: 0px;
+}
+.glassboxing {
+    border-radius: 3px;
+    filter: blur(2px);
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    z-index: 999;
+    top: 0;
+    left: 0;
+}
+.col-sm-4.imgwrap {
+    z-index: 99999;
+}
+
+.vidlist .col-sm-8 {
+    z-index: 99999;
+}
+
+.videosgallery .row.boxwrap {
+    height: 450px;
+    
+}
+.col-sm-4.vidlist {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 20px;
+    border-radius: 5px;
+}
+
