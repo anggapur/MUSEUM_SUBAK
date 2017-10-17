@@ -2,7 +2,7 @@ $(document).ready(function(){
 	//source path
 	source_path = "source/";
 	data = [
-		{ desc: 'Halo Bali 1',images:'bg1-sm.jpg'},
+		{ desc: 'Subak adalah organisasi kemasyarakatan yang khusus mengatur sistem pengairan sawah yang digunakan dalam cocok tanam padi di Bali, Indonesia. Subak ini biasanya memiliki pura yang dinamakan Pura Uluncarik, atau Pura Bedugul, yang khusus dibangun oleh para pemilik lahan dan petani yang diperuntukkan bagi dewi kemakmuran dan kesuburan dewi Sri. Sistem pengairan ini diatur oleh seorang pemuka adat yang juga adalah seorang petani di Bali.',images:'bg1-sm.jpg'},
 		{ desc: 'Halo Bali 2',images:'bg2-sm.jpg'},
 		{ desc: 'Halo Bali 3',images:'bg3-sm.jpg'},
 		{ desc: 'Halo Bali 4',images:'bg4-sm.jpg'}
