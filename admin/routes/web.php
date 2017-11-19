@@ -18,9 +18,15 @@ Route::get('token',function(){
 	return csrf_token();
 });
 
+// Topik
 Route::resource('topik','topikCtrl');
 Route::get('allTopiks','topikCtrl@allTopiks');
 Route::get('mainTopiks','topikCtrl@mainTopiks');
+// Subtopik
+Route::resource('subTopik','subTopikCtrl');
+Route::get('allDetailSubTopiks/{id}','subTopikCtrl@allDetailSubTopiks');
+Route::any('subTopik/reOrderUp/{id}','subTopikCtrl@reOrderUp');
+Route::any('subTopik/reOrderDown/{id}','subTopikCtrl@reOrderDown');
 Auth::routes();
 
 

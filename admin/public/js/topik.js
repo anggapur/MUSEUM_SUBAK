@@ -201,13 +201,14 @@ function allTopiks()
             datas = data.data;            
             $.each(datas, function(index) {
             	apen = "<div id='item"+datas[index].id+"' class='alert alert-info'>"+datas[index].nama+
-            	"<i class='edit fa fa-pencil-square-o' aria-hidden='true' data='"+datas[index].id+"'></i>"+
-            	"<i class='delete fa fa-trash' aria-hidden='true' data='"+datas[index].id+"'></i></div>";
+            	"<i title='Edit' class='edit fa fa-pencil-square-o' aria-hidden='true' data='"+datas[index].id+"'></i>"+
+            	"<i title='Hapus' class='delete fa fa-trash' aria-hidden='true' data='"+datas[index].id+"'></i></div>";
 	            $('.bodyData').append(apen);	
 	             $.each(datas[index].get_childs, function(i) {
 	             	apenDeep = "<div id='item"+datas[index].get_childs[i].id+"' class='alert alert-warning' style='margin-left:50px'>"+datas[index].get_childs[i].nama+
-	             	"<i class='edit fa fa-pencil-square-o' aria-hidden='true' data='"+datas[index].get_childs[i].id+"'></i>"+
-	             	"<i class='delete fa fa-trash' aria-hidden='true' data='"+datas[index].get_childs[i].id+"'></i></div>";
+	             	"<i title='Edit' class='edit fa fa-pencil-square-o' aria-hidden='true' data='"+datas[index].get_childs[i].id+"'></i>"+
+	             	"<i title='Hapus' class='delete fa fa-trash' aria-hidden='true' data='"+datas[index].get_childs[i].id+"'></i>"+
+	             	"<a href='"+HOST+"subTopik/"+datas[index].get_childs[i].id+"'> <i class='fa fa-file-text' title='Detail'> </i></a></div>";
 		            $('.bodyData').append(apenDeep);		            
 		        });	            
 

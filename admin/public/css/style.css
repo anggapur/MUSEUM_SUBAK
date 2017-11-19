@@ -18,3 +18,8 @@ div#successAlert {
     margin-left: 10px;
     padding-top: 4px;
 }
+
+#source-view-video
+{
+    display: none;
+}
