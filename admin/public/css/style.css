@@ -1,0 +1,20 @@
+div#successAlert {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+    box-shadow: 0px 0px 50px #000;
+    background: #3c763d;
+    color: white;
+    display: none;
+    border-color: #3c763d;
+
+}
+
+.bodyData .alert {
+    margin-bottom: 5px;
+}
+.bodyData > .alert  i {
+    float: right;
+    margin-left: 10px;
+    padding-top: 4px;
+}
