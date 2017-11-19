@@ -23,3 +23,8 @@ div#successAlert {
 {
     display: none;
 }
+
+.bodyData > .alert  i.floatLeft
+{
+    float: none;
+}

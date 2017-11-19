@@ -273,8 +273,7 @@ function reorderProses(){
 		    type: 'POST',	        
 		    async: false,
 		    success: function (data) {	            	            	            
-		        allTopiks(IDS);         
-		        alert('ay');
+		        allTopiks(IDS);         		        
 		    },
 		    cache: false,
 		    contentType: false,
