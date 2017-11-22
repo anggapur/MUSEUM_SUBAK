@@ -201,11 +201,15 @@ function allTopiks()
             datas = data.data;            
             $.each(datas, function(index) {
             	apen = "<div id='item"+datas[index].id+"' class='alert alert-info'>"+datas[index].nama+
+            	"<i title='Turun' class='edit fa fa-chevron-down' aria-hidden='true' data='"+datas[index].id+"'></i>"+
+            	"<i title='Naik' class='edit fa fa-chevron-up' aria-hidden='true' data='"+datas[index].id+"'></i>"+            	
             	"<i title='Edit' class='edit fa fa-pencil-square-o' aria-hidden='true' data='"+datas[index].id+"'></i>"+
             	"<i title='Hapus' class='delete fa fa-trash' aria-hidden='true' data='"+datas[index].id+"'></i></div>";
 	            $('.bodyData').append(apen);	
 	             $.each(datas[index].get_childs, function(i) {
 	             	apenDeep = "<div id='item"+datas[index].get_childs[i].id+"' class='alert alert-warning' style='margin-left:50px'>"+datas[index].get_childs[i].nama+
+	             	"<i title='Turun' class='edit fa fa-chevron-down' aria-hidden='true' data-parent='"+datas[index].id+"' data='"+datas[index].get_childs[i].id+"'></i>"+
+	             	"<i title='Naik' class='edit fa fa-chevron-up' aria-hidden='true' data-parent='"+datas[index].id+"' data='"+datas[index].get_childs[i].id+"'></i>"+
 	             	"<i title='Edit' class='edit fa fa-pencil-square-o' aria-hidden='true' data='"+datas[index].get_childs[i].id+"'></i>"+
 	             	"<i title='Hapus' class='delete fa fa-trash' aria-hidden='true' data='"+datas[index].get_childs[i].id+"'></i>"+
 	             	"<a href='"+HOST+"subTopik/"+datas[index].get_childs[i].id+"'> <i class='fa fa-file-text' title='Detail'> </i></a></div>";

@@ -48,6 +48,7 @@
                         @else
                             <li><a href="{{ url('topik') }}">Topik</a></li>
                             <li><a href="{{ url('kategori') }}">Kategori</a></li>
+                            <li><a href="{{ url('photo') }}">Photo</a></li>
                         @endguest
                     </ul>
 

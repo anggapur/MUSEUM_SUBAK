@@ -94,6 +94,7 @@ function createForm()
 {	
 	$('#form .panel-heading span').html('Buat');	
 	$('#form form').attr('action',HOST+'kategori');
+	$('#nama').val("");
 	STATE = 0;	
 }
 function editForm(data,id)
@@ -131,7 +132,9 @@ function deleteData(id)
 	        success: function (data) {	            
 	            if(data == "success")
 	            {	            
-	            	$('#item'+id).hide(300);            	
+	            	$('#item'+id).hide(300);  
+	            	createForm();   
+	            	     	
 	            }
 	        },
 	        cache: false,

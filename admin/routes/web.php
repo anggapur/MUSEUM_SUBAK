@@ -31,6 +31,12 @@ Route::any('subTopik/reOrderDown/{id}','subTopikCtrl@reOrderDown');
 Route::resource('kategori','kategoriCtrl');
 Route::get('allDataKategori','kategoriCtrl@allData');
 Auth::routes();
+// Photo
+Route::resource('photo','photoCtrl');
+Route::get('getSubTopik','photoCtrl@getSubTopik');
+Route::get('getKategories','photoCtrl@getKategories');
+Route::get('getAllPhotos','photoCtrl@getAllPhotos');
+Route::get('getPhotosByTabs/{id}','photoCtrl@getPhotosByTabs');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

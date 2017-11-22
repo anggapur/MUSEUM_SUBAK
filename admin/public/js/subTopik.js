@@ -4,7 +4,7 @@ $(document).ready(function(){
 	allTopiks(IDS);
 	deleteProses();
 	editProses();
-	reorderProses();
+	reorderProses();	
 	//when change
 	$("#source").change(function() {
 	  
@@ -191,8 +191,10 @@ function deleteData(id)
         success: function (data) {	            
             if(data == "success")
             {            	
+            	createForm();
             	$('#item'+id).hide(300);            	
             	allTopiks(IDS);
+            	
             }
         },
         cache: false,
@@ -256,6 +258,8 @@ function createForm()
 	$('#source').attr('required','required');
 	$('#form form').attr('action',HOST+'subTopik');
 	$('#source-view-video').hide();
+	$('#nama , #description').val("");
+	$('img#source-view').attr("src","");
 	STATE = 0;		
 }
 
@@ -281,3 +285,4 @@ function reorderProses(){
 		});		
 	});
 }
+
