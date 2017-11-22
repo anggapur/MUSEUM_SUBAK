@@ -41,7 +41,7 @@ class subTopikCtrl extends Controller
         $data['description'] = $request->description;
         $data['id_topik'] = $request->id_topik;
         //cari order
-        $order = detailTopik::where('id_topik',$data['id_topik'])->orderBy('id','DESC');
+        $order = detailTopik::where('id_topik',$data['id_topik'])->orderBy('order','DESC');
         if(count($order->get()) > 0)
         {
             $data['order'] = $order->first()->order+1;

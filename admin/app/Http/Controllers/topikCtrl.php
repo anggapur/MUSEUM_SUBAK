@@ -38,6 +38,15 @@ class topikCtrl extends Controller
      */
     public function store(Request $request)
     {
+        //cek order
+        $order = topik::where('id_parent',$request->id_parent)->orderby('order','DESC');
+        if(count($order->get()) > 0)
+        {
+            $data['order'] = $order->first()->order+1;
+        }
+        else {
+            $data['order'] = 0;
+        }
         //
         $data['nama'] = $request->nama;
         $data['id_parent'] = $request->id_parent;
@@ -92,10 +101,25 @@ class topikCtrl extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $data = $request->except('_method','_token');
-        
-
+        $queryData = topik::where('id',$id)->first();
+        //ubah order
+        // ubah order sebelum dia
+        if($queryData->id_parent !== $request->id_parent)
+        {
+            $ubahOrder = topik::where('id_parent',$queryData->id_parent)
+                        ->where('order','>',$queryData->order)->decrement('order');
+            //update ordernya dia
+            $dataQuery = topik::where('id_parent',$request->id_parent)->orderBy('order','DESC');
+            if(count($dataQuery->get()) > 0)
+            {   
+                $data['order'] = $dataQuery->first()->order+1;
+            }
+            else
+            {
+                $data['order'] = 0;
+            }
+        }
         //cek
         unset($data['background']);
         $bg = $request->file('background');
@@ -142,13 +166,50 @@ class topikCtrl extends Controller
     {
         $query['data'] = topik::with('getChilds')
         ->where('topiks.id_parent','0')
+        ->orderBy('order','ASC')
         ->get();
         return $query;
     }
 
     public function mainTopiks()
     {
-        $data['data'] = topik::where('id_parent','0')->get();
+        $data['data'] = topik::where('id_parent','0')
+        ->orderBy('order','ASC')->get();
         return $data;
+    }
+    public function reOrderUp($id)
+    {
+        $query = topik::where('id',$id)->first();
+        if($query->order > 0)
+        {
+            $update = topik::where('id',$id)->decrement('order');
+            $query = topik::where('id',$id)->first();
+            $update2 = topik::where('id_parent',$query->id_parent)
+                        ->where('order',$query->order)
+                        ->where('id','!=',$id)
+                        ->increment('order');
+        }
+        if($query)
+            return Response('success',200);
+        else 
+            return Response('failed',210);
+    }
+    public function reOrderDown($id)
+    {
+        $query = topik::where('id',$id)->first();
+        $all = topik::where('id_parent',$query->id_parent)->get();
+        if($query->order < count($all)-1)
+        {
+            $update = topik::where('id',$id)->increment('order');
+            $query = topik::where('id',$id)->first();
+            $update2 = topik::where('id_parent',$query->id_parent)
+                        ->where('order',$query->order)
+                        ->where('id','!=',$id)
+                        ->decrement('order');
+        }
+        if($query)
+            return Response('success',200);
+        else 
+            return Response('failed',210);
     }
 }
