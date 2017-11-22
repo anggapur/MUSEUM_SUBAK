@@ -39,6 +39,8 @@ Route::get('getSubTopik','photoCtrl@getSubTopik');
 Route::get('getKategories','photoCtrl@getKategories');
 Route::get('getAllPhotos','photoCtrl@getAllPhotos');
 Route::get('getPhotosByTabs/{id}','photoCtrl@getPhotosByTabs');
+Route::any('photo/reOrderUp/{id}','photoCtrl@reOrderUp');
+Route::any('photo/reOrderDown/{id}','photoCtrl@reOrderDown');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

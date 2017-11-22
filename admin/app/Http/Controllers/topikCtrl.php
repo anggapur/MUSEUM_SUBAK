@@ -155,6 +155,10 @@ class topikCtrl extends Controller
      */
     public function destroy($id)
     {
+        $queryData = topik::where('id',$id)->first();        
+        $query = topik::where('id_parent',$queryData->id_parent)
+            ->where('order','>',$queryData->order)
+            ->decrement('order');
         //
         $query = topik::where('id',$id)->delete();
         if($query)

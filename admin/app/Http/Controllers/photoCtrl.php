@@ -124,6 +124,11 @@ class photoCtrl extends Controller
     public function destroy($id)
     {
         //
+        $queryData = galleryPhoto::where('id',$id)->first();        
+        $query = galleryPhoto::where('id_kategori',$queryData->id_kategori)
+            ->where('order','>',$queryData->order)
+            ->decrement('order');
+
         $query = galleryPhoto::where('id',$id)->delete();
         if($query)
             return Response("success",200);
@@ -147,7 +152,42 @@ class photoCtrl extends Controller
     }
      public function getPhotosByTabs($id)
     {
-        $data['data'] = galleryPhoto::where('id_kategori',$id)->get();
+        $data['data'] = galleryPhoto::where('id_kategori',$id)->orderBy('order','ASC')->get();
         return $data;
+    }
+    public function reOrderUp($id)
+    {
+        $query = galleryPhoto::where('id',$id)->first();
+        if($query->order > 0)
+        {
+            $update = galleryPhoto::where('id',$id)->decrement('order');
+            $query = galleryPhoto::where('id',$id)->first();
+            $update2 = galleryPhoto::where('id_kategori',$query->id_kategori)
+                        ->where('order',$query->order)
+                        ->where('id','!=',$id)
+                        ->increment('order');
+        }
+        if($query)
+            return Response('success',200);
+        else 
+            return Response('failed',210);
+    }
+    public function reOrderDown($id)
+    {
+         $query = galleryPhoto::where('id',$id)->first();
+        $all = galleryPhoto::where('id_kategori',$query->id_kategori)->get();
+        if($query->order < count($all)-1)
+        {
+            $update = galleryPhoto::where('id',$id)->increment('order');
+            $query = galleryPhoto::where('id',$id)->first();
+            $update2 = galleryPhoto::where('id_kategori',$query->id_kategori)
+                        ->where('order',$query->order)
+                        ->where('id','!=',$id)
+                        ->decrement('order');
+        }
+        if($query)
+            return Response('success',200);
+        else 
+            return Response('failed',210);
     }
 }

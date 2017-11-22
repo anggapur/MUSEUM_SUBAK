@@ -143,6 +143,10 @@ class subTopikCtrl extends Controller
      */
     public function destroy($id)
     {
+        $queryData = detailTopik::where('id',$id)->first();        
+        $query = detailTopik::where('id_topik',$queryData->id_topik)
+            ->where('order','>',$queryData->order)
+            ->decrement('order');
         //
         $query = detailTopik::where('id',$id)->delete();
         if($query)

@@ -205,6 +205,8 @@ function loadImageByTabs(ids)
             	apen = '<div class="col-md-3" id="item'+datas[index].id+'">'+
             			'<i title="Edit" class="edit photoTool fa fa-pencil-square-o" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<i title="Hapus" class="delete photoTool fa fa-trash" aria-hidden="true" data="'+datas[index].id+'"></i>'+
+            			'<i onclick="reOrderUp('+datas[index].id+','+datas[index].id_kategori+')" title="Maju" class="reOrderUp photoTool fa fa-chevron-up" aria-hidden="true" data="'+datas[index].id+'"></i>'+
+            			'<i onclick="reOrderDown('+datas[index].id+','+datas[index].id_kategori+')" title="Mundur" class="reOrderDown photoTool fa fa-chevron-down" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<img src="'+IMAGES+datas[index].source+'" class="img-rounded img-responsive photos">'+
             			'</div>';
 	            $('.bodyData').append(apen);		            
@@ -313,4 +315,39 @@ function createForm()
 	$('#select2 option[value=0]').attr('selected','selected');
 	$('#bg-view').attr("src","");
 	
+}
+function reOrderUp(id,id_kategori)
+{
+	$.ajax({
+	    url: HOST+"photo/reOrderUp/"+id,
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	    	if(data == "success")
+	    	{
+		   		loadImageByTabs(id_kategori);	
+		   	}
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});	
+}
+
+function reOrderDown(id,id_kategori)
+{
+	$.ajax({
+	    url: HOST+"photo/reOrderDown/"+id,
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	    	if(data == "success")
+	    	{
+		   		loadImageByTabs(id_kategori);	
+		   	}
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});	
 }
