@@ -56,7 +56,7 @@
         <h4 class="modal-title" id="myModalLabel">Hapus Data</h4>
       </div>
       <div class="modal-body">
-        Anda Yakin Menghapus Topik?
+        Anda Yakin Menghapus Sub Topik?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

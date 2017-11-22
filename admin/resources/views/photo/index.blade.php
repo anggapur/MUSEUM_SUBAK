@@ -12,7 +12,7 @@
                     <form id="form-simpan" action="{{route('photo.store')}}" method="POST" class="simpan" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukan Nama Topik/Subtopik" required>
+                            <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukan Nama Photos" required>
                         </div>
                         <div class="form-group">
                             <label>Description</label>

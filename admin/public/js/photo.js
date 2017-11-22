@@ -311,5 +311,6 @@ function createForm()
 	STATE = 0;
 	$('#select1 option[value=0]').attr('selected','selected');
 	$('#select2 option[value=0]').attr('selected','selected');
+	$('#bg-view').attr("src","");
 	
 }

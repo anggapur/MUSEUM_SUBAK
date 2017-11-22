@@ -103,6 +103,8 @@ function createForm()
 	$('#form form').attr('action',HOST+'topik');
 	STATE = 0;
 	$('#select option[value=0]').attr('selected','selected');
+	$('#form-simpan img').attr("src","");
+	$("#form-simpan")[0].reset();
 	
 }
 function editForm(data,id)
@@ -141,7 +143,9 @@ function deleteData(id)
 	            if(data == "success")
 	            {
 	            	loadTopiks();	
-	            	$('#item'+id).hide(300);            	
+	            	$('#item'+id).hide(300);  
+	            	createForm();
+	            	        
 	            }
 	        },
 	        cache: false,
