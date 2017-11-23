@@ -102,6 +102,7 @@ function createForm()
 	$('#bg , #icon').attr('required','required');
 	$('#form form').attr('action',HOST+'topik');
 	STATE = 0;
+	$('#select').find('option').removeAttr('selected');
 	$('#select option[value=0]').attr('selected','selected');
 	$('#form-simpan img').attr("src","");
 	$("#form-simpan")[0].reset();
@@ -116,6 +117,7 @@ function editForm(data,id)
 	$('#bg , #icon').removeAttr('required');
 	$('#form form').attr('action',HOST+'topik/'+id);
 	STATE = 1;
+	$('#select').find('option').removeAttr('selected');
 	$('#select option[value='+data.id_parent+']').attr('selected','selected');
 	
 }

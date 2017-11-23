@@ -41,6 +41,14 @@ Route::get('getAllPhotos','photoCtrl@getAllPhotos');
 Route::get('getPhotosByTabs/{id}','photoCtrl@getPhotosByTabs');
 Route::any('photo/reOrderUp/{id}','photoCtrl@reOrderUp');
 Route::any('photo/reOrderDown/{id}','photoCtrl@reOrderDown');
+//video
+Route::resource('video','videoCtrl');
+Route::get('getSubTopikVideos','videoCtrl@getSubTopik');
+Route::get('getKategoriesVideos','videoCtrl@getKategories');
+Route::get('getAllVideos','videoCtrl@getAllPhotos');
+Route::get('getVideosByTabs/{id}','videoCtrl@getPhotosByTabs');
+Route::any('video/reOrderUp/{id}','videoCtrl@reOrderUp');
+Route::any('video/reOrderDown/{id}','videoCtrl@reOrderDown');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

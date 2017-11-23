@@ -223,10 +223,10 @@ function loadImageByTabs(ids)
 }
 function deleteProses()
 {
-	$('.delete').click(function(){
+	$('.delete').unbind('click').click(function(){
 		$('#myModal').modal('show') 
 		$('#btnDanger').attr('data',$(this).attr('data'));
-		$('#btnDanger').click(function(){
+		$('#btnDanger').unbind('click').click(function(){
 			deleteData($(this).attr('data'));
 			$('#myModal').modal('hide').removeAttr('data')
 		});
@@ -300,6 +300,7 @@ function editForm(data,id)
 	$('#bg').removeAttr('required');
 	$('#form form').attr('action',HOST+'photo/'+id);
 	STATE = 1;
+	$('#select1 , #select2').find('option').removeAttr('selected');
 	$('#select1 option[value='+data.id_topik+']').attr('selected','selected');
 	$('#select2 option[value='+data.id_kategori+']').attr('selected','selected');
 	

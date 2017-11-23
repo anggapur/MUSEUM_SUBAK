@@ -254,6 +254,7 @@ function editForm(data,id)
 
 function createForm()
 {	
+	$('#select').find('option').removeAttr('selected');
 	$('#form .panel-heading span').html('Buat');
 	$('#source').attr('required','required');
 	$('#form form').attr('action',HOST+'subTopik');
