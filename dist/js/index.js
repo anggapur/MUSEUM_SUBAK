@@ -7,7 +7,7 @@ $(document).ready(function(){
 	    	$('.main').empty();
 	    	datas = data.data;
 	    	$.each(datas,function(index){
-	    		apen = 	'<div class="col-12 col-sm-6 col-md-3 text-center" data="'+datas[index].id+'" data-title="'+datas[index].nama+'" data-bg="'+datas[index].background+'">'+
+	    		apen = 	'<div id="item'+datas[index].id+'" onclick="goToSub('+datas[index].id+')" class="col-12 col-sm-6 col-md-3 text-center" data="'+datas[index].id+'" data-title="'+datas[index].nama+'" data-bg="'+datas[index].background+'">'+
 		                    '<img src="'+IMAGES+datas[index].icon+'" class="img-fluid-logo">'+
 		                    '<p class="h4">'+datas[index].nama+'</p>'+
 		                '</div>';
@@ -19,3 +19,14 @@ $(document).ready(function(){
 	    processData: false
 	});	
 });
+
+
+function goToSub(id)
+{
+	$('#item'+id).addClass('rotates');
+	//href
+	setTimeout(function(){
+		window.location.href = HOST+"subTopik.html?id="+id;
+	},1700);
+	
+}

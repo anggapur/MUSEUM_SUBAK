@@ -1,7 +1,10 @@
-var HOST = "http://"+$(location).attr('host')+window.location.pathname;
-var ADMIN = "http://"+$(location).attr('host')+window.location.pathname+"admin";
-var IMAGES = "http://"+$(location).attr('host')+window.location.pathname+"admin/public/images/";
-var VIDEOS = "http://"+$(location).attr('host')+window.location.pathname+"admin/public/videos/";
+var loc = window.location.pathname;
+var dir = loc.substring(0, loc.lastIndexOf('/'));
+
+var HOST = "http://"+$(location).attr('host')+dir+"/";
+var ADMIN = "http://"+$(location).attr('host')+dir+"/admin/";
+var IMAGES = "http://"+$(location).attr('host')+dir+"/admin/public/images/";
+var VIDEOS = "http://"+$(location).attr('host')+dir+"/admin/public/videos/";
 var STATE = 0;
 
 

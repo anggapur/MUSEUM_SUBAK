@@ -197,4 +197,10 @@ class subTopikCtrl extends Controller
         else
             return Response("failed",210);
     }
+
+    public function getDetail($id)
+    {
+        $data = detailTopik::where('id_topik',$id)->orderBy('order','ASC')->get();
+        return $data;
+    }
 }

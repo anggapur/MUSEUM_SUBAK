@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="dist/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="dist/css/bootstrap.min.css">
         <script src="dist/js/modernizr.custom.js"></script>
+        <link rel="stylesheet" href="admin/public/fancybox-master/dist/jquery.fancybox.css">
     </head>
     <body class="index detail">
         <!-- Loader -->
@@ -32,7 +33,7 @@
         <!-- Main -->
         <div class="container">            
             <div class="row">
-                <p class="text-center w100 h1 text-white myTitle">Subtopik 1</h1>
+                <p class="text-center w100 h1 text-white titleTop">Subtopik 1</h1>
             </div>
             <div class="row justify-content-md-center main">
                 <div class="col-md-10 col-12">
@@ -42,7 +43,16 @@
                                 Subak adalah organisasi kemasyarakatan yang khusus mengatur sistem pengairan sawah yang digunakan dalam cocok tanam padi di Bali, Indonesia. Subak ini biasanya memiliki pura yang dinamakan Pura Uluncarik, atau Pura Bedugul, yang khusus dibangun oleh para pemilik lahan dan petani yang diperuntukkan bagi dewi kemakmuran dan kesuburan dewi Sri. Sistem pengairan ini diatur oleh seorang pemuka adat yang juga adalah seorang petani di Bali.
                             </div>
                             <div class="col-12 col-md-4 images">
-                                <img src="source/bg2.jpg" class="img-fluid img-rounded">
+                                <a id="img" href="" data-fancybox="gallery" data-caption="">
+                                    <img src="source/bg2.jpg" class="img-fluid img-rounded">
+                                </a>
+                                <a id="vid">
+                                    <video class="img-fluid img-rounded" controls>
+                                      <source src="" id="video_here">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                </a>
+                               <a class="fancybox" style="display: none;" href="">open video</a>
                             </div>
                         </div>
                        <div class="row button-navigation" data="0">
@@ -79,7 +89,16 @@
         <script type="text/javascript" src="dist/js/popper.min.js"></script>
         <script src="dist/js/bootstrap.min.js" ></script>        
         <script type="text/javascript" src="dist/js/loader.js"></script>
+        <script type="text/javascript" src="admin/public/fancybox-master/dist/jquery.fancybox.js"></script>
+        <script type="text/javascript" src="dist/js/main.js"></script>
         <script type="text/javascript" src="dist/js/detail.js"></script>
-      
+        <script type="text/javascript">
+        $(".fancybox").fancybox({
+            type: "iframe",
+            // optionally set fixed dimensions
+            // width: 420, // or whatever
+            // height : 380 
+        });
+        </script>
     </body>
 </html>

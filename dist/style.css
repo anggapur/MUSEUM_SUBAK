@@ -3,6 +3,11 @@ html,body
     overflow-x: hidden;
 }
 
+.fancybox-container
+{
+    z-index: 99999 !important;
+}
+
 .w100
 {
     width: 100%;
@@ -228,7 +233,7 @@ button:hover
     position: relative;
 }
 
-.detail .images > img
+.detail .images > a > img
 {
     border-radius: 5px;
 }
