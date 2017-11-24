@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	 	 
+
 	loadTopiks();
 	loadKategories();
 	loadKategoriesTab();
@@ -174,7 +176,9 @@ function loadAllPhotos()
             	apen = '<div class="col-md-3" id="item'+datas[index].id+'">'+
             			'<i title="Edit" class="edit photoTool fa fa-pencil-square-o" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<i title="Hapus" class="delete photoTool fa fa-trash" aria-hidden="true" data="'+datas[index].id+'"></i>'+
-            			'<img src="'+IMAGES+datas[index].source+'" class="img-rounded img-responsive photos">'+
+            			'<a class="boxfancy" href="'+IMAGES+datas[index].source+'" data-fancybox="gallery" data-caption="'+datas[index].nama+' - '+datas[index].description+'">'+
+            				'<img src="'+IMAGES+datas[index].source+'" class="img-rounded img-responsive photos">'+
+            			'</a>'+
             			'</div>';
 	            $('.bodyData').append(apen);		            
 	        });
@@ -201,15 +205,14 @@ function loadImageByTabs(ids)
             datas = data.data;            
             $('.bodyData').html("");
             $.each(datas, function(index) {
-            	
             	apen = '<div class="col-md-3" id="item'+datas[index].id+'">'+
             			'<i title="Edit" class="edit photoTool fa fa-pencil-square-o" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<i title="Hapus" class="delete photoTool fa fa-trash" aria-hidden="true" data="'+datas[index].id+'"></i>'+
-            			'<i onclick="reOrderUp('+datas[index].id+','+datas[index].id_kategori+')" title="Maju" class="reOrderUp photoTool fa fa-chevron-up" aria-hidden="true" data="'+datas[index].id+'"></i>'+
-            			'<i onclick="reOrderDown('+datas[index].id+','+datas[index].id_kategori+')" title="Mundur" class="reOrderDown photoTool fa fa-chevron-down" aria-hidden="true" data="'+datas[index].id+'"></i>'+
-            			'<img src="'+IMAGES+datas[index].source+'" class="img-rounded img-responsive photos">'+
+            			'<a class="boxfancy" href="'+IMAGES+datas[index].source+'" data-fancybox="gallery" data-caption="'+datas[index].nama+' - '+datas[index].description+'">'+
+            				'<img src="'+IMAGES+datas[index].source+'" class="img-rounded img-responsive photos">'+
+            			'</a>'+
             			'</div>';
-	            $('.bodyData').append(apen);		            
+	            $('.bodyData').append(apen);	
 	        });
 
             

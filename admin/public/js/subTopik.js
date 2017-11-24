@@ -131,7 +131,9 @@ function allTopiks(IDS)
             $.each(datas, function(index) {
             	if(datas[index].kategori_media == 'P')
             	{
-            		media = "<img src='"+HOST+"public/images/"+datas[index].media+"' class='img-responsive img-rounded'> ";
+            		media = "<a href='"+HOST+"public/images/"+datas[index].media+"' data-fancybox='gallery' data-caption='"+datas[index].description+"'>"+
+            		"<img src='"+HOST+"public/images/"+datas[index].media+"' class='img-responsive img-rounded'> "+
+            		"</a>";
             	}
             	else
             	{

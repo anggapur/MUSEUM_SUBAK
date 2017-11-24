@@ -22,6 +22,7 @@ Route::get('token',function(){
 Route::resource('topik','topikCtrl');
 Route::get('allTopiks','topikCtrl@allTopiks');
 Route::get('mainTopiks','topikCtrl@mainTopiks');
+Route::get('childTopiks/{id}','topikCtrl@childTopiks');
 Route::any('topik/reOrderUp/{id}','topikCtrl@reOrderUp');
 Route::any('topik/reOrderDown/{id}','topikCtrl@reOrderDown');
 // Subtopik

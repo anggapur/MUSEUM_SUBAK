@@ -181,6 +181,12 @@ class topikCtrl extends Controller
         ->orderBy('order','ASC')->get();
         return $data;
     }
+     public function childTopiks($id)
+    {
+        $data['data'] = topik::where('id_parent',$id)
+        ->orderBy('order','ASC')->get();
+        return $data;
+    }
     public function reOrderUp($id)
     {
         $query = topik::where('id',$id)->first();
