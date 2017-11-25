@@ -108,4 +108,18 @@ class kategoriCtrl extends Controller
         $data['data'] = kategori::withCount(['getPhotos','getVideos'])->get();
         return $data;
     }
+    public function getPhotoGallery($id_topik)
+    {
+        $data = kategori::with(['getPhotos' => function($q) use ($id_topik){
+            $q->where('id_topik',$id_topik);
+        }])->get();
+        return $data;
+    }
+    public function getVideoGallery($id_topik)
+    {
+        $data = kategori::with(['getVideos' => function($q) use ($id_topik){
+            $q->where('id_topik',$id_topik);
+        }])->get();
+        return $data;
+    }
 }

@@ -28,6 +28,13 @@ $(document).ready(function(){
 
 	//change layout
 	changeLayout(param);
+	//click
+	$('.imagesGallery').unbind('click').click(function(){
+		window.location.href=HOST+"galeri-foto.html?id="+param;
+	});
+	$('.videosGallery').unbind('click').click(function(){
+		window.location.href=HOST+"galeri-video.html?id="+param;
+	});
 });
 
 

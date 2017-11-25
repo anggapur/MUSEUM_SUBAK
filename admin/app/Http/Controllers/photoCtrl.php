@@ -137,7 +137,7 @@ class photoCtrl extends Controller
     }
     public function getSubTopik()
     {
-        $data['data'] = topik::where('id_parent','!=','0')->get();
+        $data['data'] = topik::where('id_parent','0')->get();
         return $data;
     }
     public function getKategories()
@@ -190,4 +190,6 @@ class photoCtrl extends Controller
         else 
             return Response('failed',210);
     }
+
+    
 }
