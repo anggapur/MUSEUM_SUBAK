@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 22, 2017 at 10:39 AM
+-- Generation Time: Nov 26, 2017 at 10:29 PM
 -- Server version: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -43,9 +43,15 @@ CREATE TABLE `detail_topiks` (
 --
 
 INSERT INTO `detail_topiks` (`id`, `id_topik`, `description`, `media`, `kategori_media`, `order`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '3', 'Detail 2', '1511314042bg2-sm.jpg', 'P', '1', '2017-11-21 17:27:22', '2017-11-21 17:27:40', NULL),
-(2, '3', 'Detail 1', '1511314050bg4-sm.jpg', 'P', '0', '2017-11-21 17:27:30', '2017-11-21 17:27:40', NULL),
-(3, '3', 'Detail ayo', '22112017012805left.png', 'P', '1', '2017-11-21 17:27:53', '2017-11-21 17:28:09', '2017-11-21 17:28:09');
+(1, '4', 'Detail 1 Maknyos', '1511357197bg1-sm.jpg', 'P', '2', '2017-11-22 05:26:37', '2017-11-24 05:12:02', NULL),
+(2, '4', 'Bg 3', '1511357205bg2-sm.jpg', 'P', '0', '2017-11-22 05:26:45', '2017-11-22 05:27:59', '2017-11-22 05:27:59'),
+(3, '4', 'Bg 5', '1511357211bg5-sm.jpg', 'P', '1', '2017-11-22 05:26:51', '2017-11-24 05:12:03', NULL),
+(4, '4', 'Detail 2', '1511357355bg2-sm.jpg', 'P', '1', '2017-11-22 05:29:15', '2017-11-22 05:29:27', '2017-11-22 05:29:27'),
+(5, '5', 'Setail 1', '1511483310bg1-sm.jpg', 'P', '0', '2017-11-23 16:28:30', '2017-11-23 16:28:30', NULL),
+(6, '4', 'Detail ke tiga nich', '1511526544vidio.mp4', 'V', '0', '2017-11-24 04:29:04', '2017-11-24 05:12:03', NULL),
+(7, '13', 'Detail 1', '1511700642bg1-sm.jpg', 'P', '0', '2017-11-26 04:50:42', '2017-11-26 04:50:42', NULL),
+(8, '13', 'Detail 2', '1511700648bg2-sm.jpg', 'P', '1', '2017-11-26 04:50:48', '2017-11-26 04:50:48', NULL),
+(9, '13', 'Detail 3', '1511700661bg4-sm.jpg', 'P', '2', '2017-11-26 04:51:01', '2017-11-26 04:51:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -71,8 +77,10 @@ CREATE TABLE `gallery_photos` (
 --
 
 INSERT INTO `gallery_photos` (`id`, `id_topik`, `id_kategori`, `nama`, `source`, `description`, `order`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '3', '1', 'Subak 1', '22112017013118bg2-sm.jpg', 'Subak Bali DI Tabanan', '0', '2017-11-21 17:31:18', '2017-11-21 17:31:47', '2017-11-21 17:31:47'),
-(2, '9', '2', 'Subak Kategori 2', '22112017013140bg3-sm.jpg', 'Mantap', '0', '2017-11-21 17:31:40', '2017-11-21 17:33:06', '2017-11-21 17:33:06');
+(1, '1', '1', 'Photo 1', '25112017020115bg1-sm.jpg', 'Photo 1', '0', '2017-11-24 18:01:15', '2017-11-24 18:01:15', NULL),
+(2, '2', '1', 'Photo 2', '25112017020126bg2-sm.jpg', 'Photo 2', '1', '2017-11-24 18:01:26', '2017-11-24 19:06:05', NULL),
+(3, '1', '1', 'Photo 3', '25112017020141bg4-sm.jpg', 'Photo 3', '2', '2017-11-24 18:01:41', '2017-11-24 18:01:41', NULL),
+(4, '1', '2', 'Photo a', '25112017020209bg5-sm.jpg', 'photo a', '0', '2017-11-24 18:02:09', '2017-11-24 18:02:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -92,6 +100,16 @@ CREATE TABLE `gallery_videos` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `gallery_videos`
+--
+
+INSERT INTO `gallery_videos` (`id`, `id_topik`, `id_kategori`, `nama`, `source`, `description`, `order`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', '1', 'Video 1', '25112017031009vidio.mp4', 'Video', '0', '2017-11-24 19:10:09', '2017-11-24 19:10:09', NULL),
+(2, '1', '1', 'Vid 2', '25112017065404vidio.mp4', 'Vid 2', '1', '2017-11-24 22:54:04', '2017-11-24 22:54:04', NULL),
+(3, '1', '1', 'Vid 3', '25112017065609vidio.mp4', 'Vid 3', '2', '2017-11-24 22:56:09', '2017-11-24 22:56:09', NULL),
+(4, '1', '1', 'Vid 4', '25112017065618vidio.mp4', 'Vid 4', '3', '2017-11-24 22:56:18', '2017-11-24 22:56:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -113,7 +131,9 @@ CREATE TABLE `kategoris` (
 
 INSERT INTO `kategoris` (`id`, `nama`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Kategori 1', '2017-11-21 17:29:49', '2017-11-21 17:29:49', NULL),
-(2, 'Kategori 2', '2017-11-21 17:29:56', '2017-11-21 17:29:56', NULL);
+(2, 'Kategori 2', '2017-11-21 17:29:56', '2017-11-21 17:29:56', NULL),
+(3, 'Kategori 3', '2017-11-24 18:02:42', '2017-11-24 18:02:42', NULL),
+(4, 'Kategori 4', '2017-11-25 23:38:06', '2017-11-25 23:38:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +159,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2017_11_18_055202_create_kategoris_table', 1),
 (14, '2017_11_18_055224_create_gallery_photos_table', 1),
 (15, '2017_11_18_055236_create_gallery_videos_table', 1),
-(16, '2017_11_21_122011_ubah_table_gallery', 1);
+(16, '2017_11_21_122011_ubah_table_gallery', 1),
+(17, '2017_11_22_020249_ubahTabelTopik', 2);
 
 -- --------------------------------------------------------
 
@@ -166,6 +187,7 @@ CREATE TABLE `topiks` (
   `background` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_parent` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -175,16 +197,21 @@ CREATE TABLE `topiks` (
 -- Dumping data for table `topiks`
 --
 
-INSERT INTO `topiks` (`id`, `nama`, `background`, `icon`, `id_parent`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Topik 1', '22112017011946bg1-sm.jpg', '22112017011946cow.png', '0', '2017-11-21 17:19:46', '2017-11-21 17:19:46', NULL),
-(2, 'Topik 2', '22112017012009bg2.jpg', '22112017012009plant.png', '0', '2017-11-21 17:20:09', '2017-11-21 17:20:09', NULL),
-(3, 'Topik 1 1', '22112017012043bg3-sm.jpg', '22112017012043farmer.png', '1', '2017-11-21 17:20:43', '2017-11-21 17:20:43', NULL),
-(4, 'Topik 2 1', '22112017012109bg3-sm.jpg', '22112017012109scarecrow.png', '2', '2017-11-21 17:21:09', '2017-11-21 17:24:18', '2017-11-21 17:24:18'),
-(5, 'Topik 3', '22112017012153bg4-sm.jpg', '22112017012153farmer.png', '0', '2017-11-21 17:21:53', '2017-11-21 17:22:02', '2017-11-21 17:22:02'),
-(6, 'TOPS', '22112017012308bg3-sm.jpg', '22112017012308cow.png', '0', '2017-11-21 17:23:08', '2017-11-21 17:23:25', '2017-11-21 17:23:25'),
-(7, 'tops', '22112017012404bg2-sm.jpg', '22112017012404cow.png', '0', '2017-11-21 17:24:04', '2017-11-21 17:24:09', '2017-11-21 17:24:09'),
-(8, 'Topik', '22112017012603cow.png', '22112017012603bg5-sm.jpg', '0', '2017-11-21 17:26:03', '2017-11-21 17:26:09', '2017-11-21 17:26:09'),
-(9, 'Topik 2 1', '22112017012658bg1-sm.jpg', '22112017012658cow.png', '2', '2017-11-21 17:26:58', '2017-11-21 17:27:06', NULL);
+INSERT INTO `topiks` (`id`, `nama`, `background`, `icon`, `id_parent`, `order`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Topik 1', '22112017021429bg1-sm.jpg', '24112017024455farmer.png', '0', '0', '2017-11-21 18:14:29', '2017-11-26 04:45:22', NULL),
+(2, 'Topik 2', '22112017021503bg2-sm.jpg', '22112017021503cow.png', '0', '1', '2017-11-21 18:15:03', '2017-11-23 18:37:59', NULL),
+(7, 'Topik 3', '26112017073432bg1-sm.jpg', '26112017124025plant.png', '0', '2', '2017-11-25 23:34:32', '2017-11-26 04:40:54', NULL),
+(8, 'Topik 4', '26112017124108bg3-sm.jpg', '26112017124108scarecrow.png', '0', '3', '2017-11-26 04:41:08', '2017-11-26 04:41:08', NULL),
+(9, 'Topik 5', '26112017124132bg5-sm.jpg', '26112017124132sprout.png', '0', '4', '2017-11-26 04:41:32', '2017-11-26 04:41:32', NULL),
+(10, 'Topik 6', '26112017124148bg4-sm.jpg', '26112017124148cow.png', '0', '5', '2017-11-26 04:41:48', '2017-11-26 04:41:48', NULL),
+(11, 'Topik 7', '26112017124232bg3-sm.jpg', '26112017124232cow.png', '0', '6', '2017-11-26 04:42:32', '2017-11-26 04:42:32', NULL),
+(12, 'Topik 8', '26112017124243bg2-sm.jpg', '26112017124243farmer.png', '0', '7', '2017-11-26 04:42:43', '2017-11-26 04:42:43', NULL),
+(13, 'Sub Topik 1', '26112017124718bg1-sm.jpg', '26112017124718cow.png', '1', '0', '2017-11-26 04:47:18', '2017-11-26 04:47:18', NULL),
+(14, 'Sub Topik 2', '26112017124738bg1-sm.jpg', '26112017124738farmer.png', '1', '1', '2017-11-26 04:47:38', '2017-11-26 04:47:38', NULL),
+(15, 'Sub Topik 3', '26112017124814bg4-sm.jpg', '26112017124814scarecrow.png', '1', '2', '2017-11-26 04:48:14', '2017-11-26 04:49:15', NULL),
+(16, 'Sub Topik 4', '26112017124928bg5-sm.jpg', '26112017124928plant.png', '1', '3', '2017-11-26 04:49:28', '2017-11-26 04:49:28', NULL),
+(17, 'Sub Topik 5', '26112017124942bg4-sm.jpg', '26112017124942sprout.png', '1', '4', '2017-11-26 04:49:42', '2017-11-26 04:49:42', NULL),
+(18, 'Sub Topik 6', '26112017125006bg2-sm.jpg', '26112017125006plant.png', '1', '5', '2017-11-26 04:50:06', '2017-11-26 04:50:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -208,7 +235,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'I Gede Angga Purnajiwa Arimbawa', 'arimbawaangga@gmail.com', '$2y$10$paOqE9tw3uE6OWStFv4FlO8z1PEF.ijiLxPW.PcJLFUvGYabfNGhO', NULL, '2017-11-21 17:17:56', '2017-11-21 17:17:56', NULL);
+(1, 'I Gede Angga Purnajiwa Arimbawa', 'arimbawaangga@gmail.com', '$2y$10$paOqE9tw3uE6OWStFv4FlO8z1PEF.ijiLxPW.PcJLFUvGYabfNGhO', 'H4ZBCARZk0Y93beSxWUUjSrc5mHNXjT7MdxwVKZQObLHU3q1YKCrfdm82j5N', '2017-11-21 17:17:56', '2017-11-21 17:17:56', NULL);
 
 --
 -- Indexes for dumped tables
@@ -271,32 +298,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_topiks`
 --
 ALTER TABLE `detail_topiks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `gallery_photos`
 --
 ALTER TABLE `gallery_photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `gallery_videos`
 --
 ALTER TABLE `gallery_videos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `kategoris`
 --
 ALTER TABLE `kategoris`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `topiks`
 --
 ALTER TABLE `topiks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `users`
 --
