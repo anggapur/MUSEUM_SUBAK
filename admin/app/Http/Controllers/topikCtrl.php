@@ -13,9 +13,14 @@ class topikCtrl extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['edit','childTopiks','mainTopiks']]);
+    }  
     public function index()
     {
         //
+
         $data['topik'] = topik::where('id_parent','0')->get();
         return view('topik.index')->with($data);
     }

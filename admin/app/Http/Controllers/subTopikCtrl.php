@@ -14,6 +14,10 @@ class subTopikCtrl extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['getDetail']]);
+    }  
     public function index()
     {
         //

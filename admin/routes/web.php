@@ -18,6 +18,7 @@ Route::get('token',function(){
 	return csrf_token();
 });
 
+Auth::routes();
 // Topik
 Route::resource('topik','topikCtrl');
 Route::get('allTopiks','topikCtrl@allTopiks');
@@ -36,7 +37,7 @@ Route::resource('kategori','kategoriCtrl');
 Route::get('allDataKategori','kategoriCtrl@allData');
 Route::any('kategori/getPhotoGallery/{id_topik}','kategoriCtrl@getPhotoGallery');
 Route::any('kategori/getVideoGallery/{id_topik}','kategoriCtrl@getVideoGallery');
-Auth::routes();
+
 // Photo
 Route::resource('photo','photoCtrl');
 Route::get('getSubTopik','photoCtrl@getSubTopik');

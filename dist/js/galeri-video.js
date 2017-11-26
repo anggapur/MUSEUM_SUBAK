@@ -29,15 +29,13 @@
 				prev.attr('disabled','disabled');
 		});		
 	});
-
+	
 	loadContent(param);
 	// go back
 	$('#back').click(function(){
+
 		setTimeout(function(){
-	 		$('.loading').fadeIn("slow" , function(){
-	 			$('.container.body').hide();
-		  		window.location.href=HOST+"subTopik.html?id="+param;
-		  	});
+	 		window.location.href=HOST+"subTopik.html?id="+param;		  		
 		}, 500);
 
 	});	
@@ -93,6 +91,10 @@ function loadContent(param)
 		source = $(this).attr('data-source');
 		$('#video video').attr('src',source);
 		$('.overlay').css('display','block');
+		$('.glassboxing').removeClass('glassboxingSelected');
+		$('.boxwrapping .col-sm-8').removeClass('textWhite');
+		$(this).find('.glassboxing').addClass('glassboxingSelected');
+		$(this).find('.col-sm-8').addClass('textWhite');
 	});
 }
 
