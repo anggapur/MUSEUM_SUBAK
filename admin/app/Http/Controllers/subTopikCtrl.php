@@ -54,23 +54,27 @@ class subTopikCtrl extends Controller
         {
             $data['order'] = 0;
         }
-
-        $image = $request->file('source');
-        $imageFileName = time() .$image->getClientOriginalName();
-        $data['media'] = $imageFileName;
-        //cek file i
-        if(in_array($image->getClientOriginalExtension(),['png','jpg','jpeg']))        
+        $data['media'] = "";
+        $data['kategori_media'] = "";
+        $bg = $request->file('source');
+        if($bg !== NULL)
         {
-            $destinationPath = 'public/images';
-            $data['kategori_media'] = 'P';
+            $data['media'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
+            if(in_array($bg->getClientOriginalExtension(),['png','jpg','jpeg']))        
+            {
+                $destinationPath = 'public/images';
+                $data['kategori_media'] = 'P';
+            }
+            else
+            {
+                $destinationPath = 'public/videos';
+                $data['kategori_media'] = 'V';
+            }
+            $move = $bg->move($destinationPath,$data['media']);
         }
-        else
-        {
-            $destinationPath = 'public/videos';
-            $data['kategori_media'] = 'V';
-        }
+        
                 
-        $move = $image->move($destinationPath,$data['media']);
+        
                 
         $query = detailTopik::create($data);
         if($query)
@@ -206,5 +210,16 @@ class subTopikCtrl extends Controller
     {
         $data = detailTopik::where('id_topik',$id)->orderBy('order','ASC')->get();
         return $data;
+    }
+
+    public function hapusMedia($id)
+    {
+        $data['media'] = "";
+        $data['kategori_media'] = "";
+        $query = detailTopik::where('id',$id)->update($data);
+        if($query)
+            return Response("success",200);
+        else
+            return Response("failed",210);
     }
 }

@@ -1,5 +1,6 @@
 var IDS = $('input[name=id_topik]').val();
 $(document).ready(function(){
+	$('.hapusMedia').hide();
 	//init
 	allTopiks(IDS);
 	deleteProses();
@@ -49,6 +50,7 @@ $(document).ready(function(){
 
 	//submit to save
 	$('#form-simpan').submit(function(){
+		tinyMCE.triggerSave();		
 		var formData = new FormData(this);
 		if(STATE == 0)
 	    {
@@ -129,24 +131,31 @@ function allTopiks(IDS)
             console.log(data.data);
             datas = data.data;            
             $.each(datas, function(index) {
+
+            	media="";
+            	col = "11";
             	if(datas[index].kategori_media == 'P')
             	{
-            		media = "<a href='"+HOST+"public/images/"+datas[index].media+"' data-fancybox='gallery' data-caption='"+datas[index].description+"'>"+
+            		media = '<div class="col-md-4">'+
+            		"<a href='"+HOST+"public/images/"+datas[index].media+"' data-fancybox='gallery' data-caption='"+datas[index].description+"'>"+
             		"<img src='"+HOST+"public/images/"+datas[index].media+"' class='img-responsive img-rounded'> "+
-            		"</a>";
+            		"</a> </div>";
+            		col = "7";
             	}
-            	else
+            	else if(datas[index].kategori_media == 'V')
             	{
-            		media = '<video class="img-responsive" width="400" controls>'+            		
+            		media = '<div class="col-md-4">'+
+            		'<video class="img-responsive" width="400" controls>'+            		
 '                              <source src="'+HOST+"public/videos/"+datas[index].media+'" id="video_here">'+
                                 'Your browser does not support HTML5 video.'+
-                            '</video>';
+                            '</video> </div>';
+                    col = "7";
             	}
 
             	apen = "<div id='item"+datas[index].id+"' class='alert alert-info'>"+
             				"<div class='row'>"+
-				            	"<div class='col-md-7'>"+datas[index].description+"</div>"+
-				            	"<div class='col-md-4'>"+media+"</div>"+
+				            	"<div class='col-md-"+col+"'>"+datas[index].description+"</div>"+
+				            	media+
 				            	"<div class='col-md-1'>"+
 					            	"<i title='Edit' class='edit fa fa-pencil-square-o' aria-hidden='true' data='"+datas[index].id+"'></i>"+
 					            	"<i title='Hapus' class='delete fa fa-trash' aria-hidden='true' data='"+datas[index].id+"'></i>"+
@@ -232,18 +241,27 @@ function editData(id)
 function editForm(data,id)
 {
 	$('#description').val(data.description);
+	tinyMCE.activeEditor.setContent(data.description);
 	$('#form .panel-heading span').html('Edit');
 
 	if(data.kategori_media == "P")
 	{
 		$('#source-view').attr('src',IMAGES+data.media).show();
 		$('#source-view-video').hide();
+		$('.hapusMedia').show().attr('onclick','hapusMedia('+id+')');
 	}
-	else
+	else if(data.kategori_media == "V")
 	{
 		$('#source-view-video').attr('src',VIDEOS+data.media).show();
 		$('#source-view').hide();
+		$('.hapusMedia').show().attr('onclick','hapusMedia('+id+')');
 	}
+	else
+	{	
+		$('#source-view-video').hide();
+		$('#source-view').hide();
+		$('.hapusMedia').hide();
+	}	
 
 	
 	
@@ -256,9 +274,10 @@ function editForm(data,id)
 
 function createForm()
 {	
+	tinyMCE.activeEditor.setContent("");
 	$('#select').find('option').removeAttr('selected');
 	$('#form .panel-heading span').html('Buat');
-	$('#source').attr('required','required');
+	// $('#source').attr('required','required');
 	$('#form form').attr('action',HOST+'subTopik');
 	$('#source-view-video').hide();
 	$('#nama , #description').val("");
@@ -286,6 +305,27 @@ function reorderProses(){
 		    contentType: false,
 		    processData: false
 		});		
+	});
+}
+
+
+function hapusMedia(id)
+{
+	$.ajax({
+	    url: HOST+"subTopik/hapusMedia/"+id,
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        if(data == "success")    
+	        {
+	        	$('#source-view').hide();
+                $('#source-view-video').hide();
+                $('.hapusMedia').hide();
+	        }
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
 	});
 }
 

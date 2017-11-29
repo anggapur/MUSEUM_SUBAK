@@ -1,11 +1,20 @@
 var loc = window.location.pathname;
 var dir = loc.substring(0, loc.lastIndexOf('/'));
-
+var musik ="";
 var HOST = "http://"+$(location).attr('host')+dir+"/";
 var ADMIN = "http://"+$(location).attr('host')+dir+"/admin/";
 var IMAGES = "http://"+$(location).attr('host')+dir+"/admin/public/images/";
 var VIDEOS = "http://"+$(location).attr('host')+dir+"/admin/public/videos/";
 var STATE = 0;
+
+//
+playMusikBackground();
+
+function playMusikBackground(){
+	audio = ADMIN+"public/musik/Gus Teja - Morning Happiness.mp3";		
+	musik = new Audio(audio); 	
+	musik.play();
+}
 
 
 function loadSubtopik(data)

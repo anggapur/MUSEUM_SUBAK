@@ -118,21 +118,47 @@ function changeLayout(id)
 
 function cetakMedia(jenis, source)
 {
-	$('.images > a#img > img , .images > a#vid > video').hide();
-	$('.images > a#vid > video').each(function(){
-		this.pause();
-	});
-
-	if(jenis == "P")
+	if(jenis !== "")
 	{
-		$('.images > a#img > img').attr('src',IMAGES+source).show(); //
-		$('.images > a#img').attr('href',IMAGES+source);
+		$('.description').attr('class','description col-12 col-md-8');
+		$('.images').show();
+
+		$('.images > a#img > img , .images > a#vid > video').hide();
+		$('.images > a#vid > video').each(function(){
+			this.pause();
+		});
+
+		if(jenis == "P")
+		{
+			$('.images > a#img > img').attr('src',IMAGES+source).show(); //
+			$('.images > a#img').attr('href',IMAGES+source);
+		}
+		else
+		{
+			$('.images > a#vid > video').attr('src',VIDEOS+source).show(); //	
+			$('.images > a#vid > video').unbind('click').click(function(){
+				$('.fancybox').attr('href',VIDEOS+source).click();			
+			});
+		}
 	}
 	else
 	{
-		$('.images > a#vid > video').attr('src',VIDEOS+source).show(); //	
-		$('.images > a#vid > video').unbind('click').click(function(){
-			$('.fancybox').attr('href',VIDEOS+source).click();			
+		$('.description').attr('class','description col-12 col-md-12');
+		$('.images').hide();
+	}
+
+		
+	if ($('.description').prop('scrollHeight') > $('.description').prop('clientHeight')) {
+	    // your element have overflow		
+		$('.description').css({
+			'overflow-y':'scroll',
+			'height':'calc(100% - 50px)'
+		});
+	} else {
+	    // your element doesn't have overflow	    
+	    $('.description').css({
+			'overflow-y':'hidden',
+			'height':'calc(100%)'
 		});
 	}
 }

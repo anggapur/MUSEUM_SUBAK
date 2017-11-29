@@ -1,3 +1,4 @@
+
 div#successAlert {
     position: fixed;
     right: 20px;
@@ -36,5 +37,10 @@ i.photoTool {
     cursor: pointer;
 }
 img.photos{
+    cursor: pointer;
+}
+
+.hapusMedia
+{
     cursor: pointer;
 }

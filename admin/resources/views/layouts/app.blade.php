@@ -18,7 +18,10 @@
 
     <!-- jQuery -->
     <script src="{{ asset('public/js/jquery-1.11.2.min.js') }}"></script> 
+    <script src="{{ asset('public/tinymce/js/tinymce/tinymce.min.js') }}"></script> 
+    <script>tinymce.init({ selector:'textarea' });</script>
     <script src="{{ asset('public/js/main.js') }}"></script> 
+    
     
 </head>
 <body>

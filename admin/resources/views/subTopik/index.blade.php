@@ -12,16 +12,18 @@
                     <form id="form-simpan" action="{{route('subTopik.store')}}" method="POST" class="simpan" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Deskripsi</label>
-                            <textarea id="description" class="form-control" name="description" placeholder="Masukan Deskripsi" rows="5" required></textarea>
+                            <textarea id="description" class="form-control" name="description" placeholder="Masukan Deskripsi" rows="5"></textarea>
+
                         </div>                        
                         <div class="form-group">
-                            <label>Gambar / Video</label>
-                            <input type="file" name="source" class="form-control" id="source" required>
+                            <label>Gambar / Video</label>                        
+                            <input type="file" name="source" class="form-control" id="source">
                              <img id="source-view" src="#" alt="" class="img-responsive img-rounded" />
                              <video id="source-view-video" width="400" class="img-responsive" controls>
                               <source src="" id="video_here">
                                 Your browser does not support HTML5 video.
                             </video>
+                            <i class="fa fa-trash hapusMedia">Hapus Media</i>
                         </div>                       
                         <div class="form-group">
                             <input type="hidden" name="id_topik" value="{{$data->id}}">

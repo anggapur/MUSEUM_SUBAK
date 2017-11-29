@@ -1,3 +1,47 @@
+/*FONT*/
+@font-face {
+    font-family: dancingScriptBold;
+    src: url(font/DancingScript-Bold.ttf);
+}
+@font-face {
+    font-family: dancingScript;
+    src: url(font/DancingScript-Regular.ttf);
+}
+@font-face {
+    font-family: scriptMT;
+    src: url(font/ScriptMTBold.ttf);
+}
+*
+{
+  font-family: scriptMT;
+}
+/*scroll di description*/
+.row.boxwrap {
+    height: 100%;
+}
+
+.boxwrap .description {
+    /*overflow-y: scroll;*/
+    height: calc(100%);
+}
+/*Buat Kayak Binder untuk button images gallery dan video gallery di sub topik dan topik*/
+@media only screen and (min-width: 960px){
+  .row.button-collections.d-flex.justify-content-center {
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+  }
+
+  .row.button-collections.d-flex.justify-content-center button {
+      margin: 0px;
+      margin-left: 5px;
+      border-radius: 15px 15px 0px 0px;
+      padding: 10px 14px;
+      z-index: 99999 !important;
+  }
+}
+
+/**/
 .row.forAlert {padding: 0px !important;margin-bottom: 0px !important;}
 .row.forAlert .alert{
     width:100%;
@@ -354,6 +398,18 @@ button:hover
 .gallery ::-webkit-scrollbar-thumb
 {
     background-color: #ffffff;
+}
+.detailScroll ::-webkit-scrollbar
+{
+    width: 5px;    
+    background-color: #ffffff;
+}
+
+.detailScroll ::-webkit-scrollbar-thumb
+{
+    
+    background-color: rgba(16, 16, 16, 0.4);
+    border-radius: 5px;
 }
 
 .videosgallery #next i.fa.fa-forward {

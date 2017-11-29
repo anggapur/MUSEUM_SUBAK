@@ -32,6 +32,7 @@ Route::get('allDetailSubTopiks/{id}','subTopikCtrl@allDetailSubTopiks');
 Route::any('subTopik/reOrderUp/{id}','subTopikCtrl@reOrderUp');
 Route::any('subTopik/reOrderDown/{id}','subTopikCtrl@reOrderDown');
 Route::any('subTopik/getDetail/{id}','subTopikCtrl@getDetail');
+Route::any('subTopik/hapusMedia/{id}','subTopikCtrl@hapusMedia');
 //Kategori
 Route::resource('kategori','kategoriCtrl');
 Route::get('allDataKategori','kategoriCtrl@allData');
