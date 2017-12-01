@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var param = url.searchParams.get("id");
-	audio = "Bpm150_C_Gamelan_Arp.wav";
+	
 	
 	//call
 	$.ajax({
@@ -14,7 +14,7 @@ $(document).ready(function(){
 	    	$('.main').empty();
 	    	datas = data.data;
 	    	$.each(datas,function(index){	    		
-	    		apen = 	'<div id="item'+datas[index].id+'" onclick="goToDetail('+datas[index].id+','+param+',`'+audio+'`)" class="col-12 col-sm-6 col-md-3 text-center" data="'+datas[index].id+'" data-title="'+datas[index].nama+'" data-bg="'+datas[index].background+'">'+
+	    		apen = 	'<div id="item'+datas[index].id+'" onclick="goToDetail('+datas[index].id+','+param+')" class="col-12 col-sm-6 col-md-3 text-center" data="'+datas[index].id+'" data-title="'+datas[index].nama+'" data-bg="'+datas[index].background+'">'+
 		                    '<img src="'+IMAGES+datas[index].icon+'" class="img-fluid-logo">'+
 		                    '<p class="h4">'+datas[index].nama+'</p>'+
 		                '</div>';
@@ -32,18 +32,14 @@ $(document).ready(function(){
 	//click
 	$('.imagesGallery').unbind('click').click(function(){
 		// Musik
-		audio = ADMIN+"public/musik/"+audio;
-		musik.pause();		
-		new Audio(audio).play(); 
+		playMusikClick();
 		setTimeout(function(){
 			window.location.href=HOST+"galeri-foto.html?id="+param;
 		},1000);		
 	});
 	$('.videosGallery').unbind('click').click(function(){
 		// Musik
-		audio = ADMIN+"public/musik/"+audio;
-		musik.pause();		
-		new Audio(audio).play(); 
+		playMusikClick();
 		setTimeout(function(){
 			window.location.href=HOST+"galeri-video.html?id="+param;
 		},1000);		
@@ -54,9 +50,7 @@ $(document).ready(function(){
 
 function goToDetail(id,param)
 {
-	audio = ADMIN+"public/musik/"+audio;
-	musik.pause();	
-	new Audio(audio).play(); 
+	playMusikClick();
 	$('#item'+id).addClass('rotates');
 	//href
 	setTimeout(function(){

@@ -1,4 +1,7 @@
 /*FONT*/
+body,html{
+  overflow: hidden;
+}
 @font-face {
     font-family: dancingScriptBold;
     src: url(font/DancingScript-Bold.ttf);
@@ -15,11 +18,25 @@
 {
   font-family: scriptMT;
 }
+.boxwrap .description 
+, .boxwrap .description b 
+, .boxwrap .description a 
+, .fancybox-caption
+/*, .gallery p.h6.text-center.title*/
+{
+  font-family: "Segoe UI","Roboto","Helvetica Neue","Arial","sans-serifbody";
+}
 /*scroll di description*/
 .row.boxwrap {
     height: 100%;
 }
-
+.noPad
+{
+  padding: 0px !important;
+}
+.noMar {
+    margin-left: 0px !important;
+}
 .boxwrap .description {
     /*overflow-y: scroll;*/
     height: calc(100%);
@@ -115,7 +132,7 @@ height: 100%;
 body.index .container {
     top: 50%;
     position: relative;
-    transform: translateY(-50%);
+    transform: translateY(-45%);
     z-index: 99998;
 }
 
@@ -126,7 +143,10 @@ body.index .img-fluid-logo:hover
     cursor: pointer;
 }
 /*ornameny style*/
-img.ornament-left {
+svg{
+  fill:red;
+}
+.ornament-left {
     width: 390px;
     position: absolute;
     top: 0;
@@ -135,7 +155,7 @@ img.ornament-left {
     z-index: 99995;
 }
 
-img.ornament-right {
+.ornament-right {
     width: 390px;
     position: absolute;
     top: 0;
@@ -143,24 +163,25 @@ img.ornament-right {
     padding: 20px 20px 0px 0px;
     z-index: 99995;
 }
-img.ornament-left-bottom, img.ornament-right-bottom {
+
+.ornament-left-bottom, .ornament-right-bottom {
     width: 200px;
     position: absolute;
     bottom:0;
     z-index:999;
 }
-img.ornament-left-bottom
+.ornament-left-bottom
 {
     left:0;
     padding: 20px 0px 0px 20px;
     transform: rotate(-90deg);
 }
-img.ornament-right-bottom{
+.ornament-right-bottom{
     right:0;
     padding: 20px 20px 0px 0px;
     transform: rotate(90deg);
 }
-img.ornament-top {
+.ornament-top {
     width: 400px;
     position: absolute;
     z-index: 99995;
@@ -302,7 +323,7 @@ button:hover
     border-radius: 5px;
     overflow: hidden;
     transition: all 300ms;
-    height: 300px;
+    height: 450px;
     position: relative;
 }
 

@@ -7,8 +7,8 @@ $(document).ready(function(){
 	    	$('.main').empty();
 	    	datas = data.data;
 	    	$.each(datas,function(index){
-	    		audio = "Bpm150_C_Gamelan_Arp.wav";
-	    		apen = 	'<div id="item'+datas[index].id+'" onclick="goToSub('+datas[index].id+',`'+audio+'`)" class="col-12 col-sm-6 col-md-3 text-center" data="'+datas[index].id+'" data-title="'+datas[index].nama+'" data-bg="'+datas[index].background+'">'+
+	    		
+	    		apen = 	'<div id="item'+datas[index].id+'" onclick="goToSub('+datas[index].id+')" class="col-12 col-sm-6 col-md-3 text-center" data="'+datas[index].id+'" data-title="'+datas[index].nama+'" data-bg="'+datas[index].background+'">'+
 		                    '<img src="'+IMAGES+datas[index].icon+'" class="img-fluid-logo">'+
 		                    '<p class="h4">'+datas[index].nama+'</p>'+
 		                '</div>';
@@ -22,11 +22,9 @@ $(document).ready(function(){
 });
 
 
-function goToSub(id,audio)
+function goToSub(id)
 {
-	audio = ADMIN+"public/musik/"+audio;	
-	musik.pause();
-	new Audio(audio).play(); 
+	playMusikClick(); 
 	$('#item'+id).addClass('rotates');
 	//href
 	setTimeout(function(){

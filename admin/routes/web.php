@@ -55,6 +55,12 @@ Route::get('getAllVideos','videoCtrl@getAllPhotos');
 Route::get('getVideosByTabs/{id}','videoCtrl@getPhotosByTabs');
 Route::any('video/reOrderUp/{id}','videoCtrl@reOrderUp');
 Route::any('video/reOrderDown/{id}','videoCtrl@reOrderDown');
+//musik
+Route::resource('musik','musikCtrl');
+Route::get('allDataMusik','musikCtrl@allData');
+Route::get('musik/changeState/{id}/{state}','musikCtrl@changeState');
+Route::get('musikBackground','musikCtrl@musikBackground');
+Route::get('musikClick','musikCtrl@musikClick');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

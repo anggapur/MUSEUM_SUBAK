@@ -11,12 +11,39 @@ var STATE = 0;
 playMusikBackground();
 
 function playMusikBackground(){
-	audio = ADMIN+"public/musik/Gus Teja - Morning Happiness.mp3";		
+	$.ajax({
+	    url: ADMIN+"/musikBackground",
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        audio = ADMIN+"public/musik/"+data;	
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});		
 	musik = new Audio(audio); 	
+	musik.loop = true;
 	musik.play();
 }
 
+function playMusikClick()
+{
+	$.ajax({
+	    url: ADMIN+"/musikClick",
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        audio = ADMIN+"public/musik/"+data;	
+			musik.pause();
+			new Audio(audio).play();
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});		
 
+}
 function loadSubtopik(data)
 {	
 	$.ajax({

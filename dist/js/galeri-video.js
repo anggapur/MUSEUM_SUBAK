@@ -1,4 +1,6 @@
 	$(document).ready(function(){
+	//mute musik
+	musik.pause();
 	//deklarasi variabel
 	boxwrap = $('.vidlist');
 	height = boxwrap.height();
@@ -6,7 +8,7 @@
 	prev = $('#prev');
 	next = $('#next');
 	scrollValue = 100;
-
+	STATE = 1;
 	//get id i url
 	var url_string = window.location.href;
 	var url = new URL(url_string);
@@ -94,7 +96,7 @@ function loadContent(param)
 		$('.glassboxing').removeClass('glassboxingSelected');
 		$('.boxwrapping .col-sm-8').removeClass('textWhite');
 		$(this).find('.glassboxing').addClass('glassboxingSelected');
-		$(this).find('.col-sm-8').addClass('textWhite');
-	});
+		$(this).find('.col-sm-8').addClass('textWhite');		
+	});	
 }
 
