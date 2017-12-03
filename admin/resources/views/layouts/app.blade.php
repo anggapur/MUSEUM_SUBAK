@@ -55,6 +55,8 @@
                             <li><a href="{{ url('photo') }}">Photo</a></li>
                             <li><a href="{{ url('video') }}">Video</a></li>
                             <li><a href="{{ url('musik') }}">Musik</a></li>
+                            <li><a href="{{ url('kabupaten') }}">Kabupaten</a></li>
+                            <li><a href="{{ url('node') }}">Node</a></li>
                         @endguest
                     </ul>
 

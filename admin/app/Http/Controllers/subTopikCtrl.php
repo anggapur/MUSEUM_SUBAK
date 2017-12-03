@@ -42,7 +42,11 @@ class subTopikCtrl extends Controller
     public function store(Request $request)
     {
         //
-        $data['description'] = $request->description;
+        if($request->description == NULL || $request->description == "")
+            $data['description'] = "";
+        else
+            $data['description'] = $request->description;
+
         $data['id_topik'] = $request->id_topik;
         //cari order
         $order = detailTopik::where('id_topik',$data['id_topik'])->orderBy('order','DESC');
@@ -119,7 +123,11 @@ class subTopikCtrl extends Controller
     public function update(Request $request, $id)
     {
         //
-        $data['description'] = $request->description;
+        if($request->description == NULL || $request->description == "")
+            $data['description'] = "";
+        else
+            $data['description'] = $request->description;
+
         $bg = $request->file('source');
         if($bg !== NULL)
         {

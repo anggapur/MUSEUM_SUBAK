@@ -69,6 +69,7 @@ $(document).ready(function(){
 			            $('#message').html('Edit '+title);
 			            $('#successAlert').show().fadeOut(5000);
 			            createForm(); 
+			            cekActiveTabs();
 			        }
 		        },
 		        cache: false,

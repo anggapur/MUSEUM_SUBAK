@@ -11,6 +11,7 @@ $(document).ready(function(){
 	var url = new URL(url_string);
 	var param = url.searchParams.get("id");
 	//aciton
+	changeLayout(param);
 	next.click(function(){
 		prev.removeAttr('disabled');
 		boxwrap.animate({'scrollTop':'+='+scrollValue},300,function(){
@@ -41,6 +42,23 @@ $(document).ready(function(){
 
 	});	
 });
+
+function changeLayout(id)
+{
+	alert(id);
+	$.ajax({
+	    url: ADMIN+"topik/"+id+"/edit",
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        $('.myTitle').html("Image Gallery<br>"+data.nama);
+	        $('.cover').css('background-image','url('+IMAGES+data.background+')');
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});
+}
 
 function loadContent(param)
 {
