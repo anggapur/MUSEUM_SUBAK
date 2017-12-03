@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\galleryNode;
 use App\node;
+use Carbon\Carbon;
 class galleryNodeCtrl extends Controller
 {
     /**
@@ -36,6 +37,19 @@ class galleryNodeCtrl extends Controller
     public function store(Request $request)
     {
         //
+         $data['nama'] = $request->nama;
+         $data['id_node'] = $request->id_node;
+       
+        //image
+        $bg = $request->file('source');
+        $data['source'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
+        $destinationPath = "public/images";
+        $move = $bg->move($destinationPath,$data['source']);        
+        $query = galleryNode::create($data);
+        if($query)
+            return Response("success",200);
+        else 
+            return Response("failed",210);
     }
 
     /**
@@ -60,6 +74,8 @@ class galleryNodeCtrl extends Controller
     public function edit($id)
     {
         //
+         $data = galleryNode::where('id',$id)->first();
+        return $data;
     }
 
     /**
@@ -72,6 +88,21 @@ class galleryNodeCtrl extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data['nama'] = $request->nama;
+        $data['id_node'] = $request->id_node;
+        
+        $bg = $request->file('source');
+        if($bg !== NULL)
+        {
+            $data['source'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
+            $destinationPath = 'public/images';
+            $move = $bg->move($destinationPath,$data['source']);
+        }
+        $query = galleryNode::where('id',$id)->update($data);
+        if($query)
+            return Response("success",200);
+        else
+            return Response("failed",210);
     }
 
     /**
@@ -83,5 +114,15 @@ class galleryNodeCtrl extends Controller
     public function destroy($id)
     {
         //
+        $query = galleryNode::where('id',$id)->delete();
+        if($query)
+            return Response("success",200);
+        else
+            return Response("failed",210);
+    }
+    public function allGalleryNode($id)
+    {
+        $data['data'] = galleryNode::where('id_node',$id)->get();
+        return $data;
     }
 }

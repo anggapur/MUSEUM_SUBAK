@@ -20,7 +20,7 @@
                              <img id="bg-view" src="#" alt="Photo Image" class="img-responsive img-rounded" />
                         </div>                      
                         <div class="form-group">
-                            <input type="hidden" name="id_node" value="{{$data->id}}">
+                            <input type="hidden" name="id_node" value="{{$data->id}}" id="id_node" data="{{$data->id}}">
                             <input type="submit" name="submit" value="Simpan" id="simpan" class="btn btn-success" >
                             {{csrf_field()}}
                         </div>
@@ -30,13 +30,7 @@
         </div>
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Photo <b>{{$data['nama_node']}}</b></div>
-                    <div>
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist" id="navTabs">
-                        <li role="presentation" class="active" id="allPhotos"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Semua</a></li>                       
-                        </ul>
-                    </div>
+                <div class="panel-heading">Photo <b>{{$data['nama_node']}}</b></div>                   
                 <div class="panel-body bodyData">
 
                 </div>

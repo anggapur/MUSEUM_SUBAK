@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 function changeLayout(id)
 {
-	alert(id);
+	
 	$.ajax({
 	    url: ADMIN+"topik/"+id+"/edit",
 	    type: 'GET',	        

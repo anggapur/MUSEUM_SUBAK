@@ -41,6 +41,7 @@ class nodeCtrl extends Controller
         $data['nama_node'] = $request->nama;
         $data['id_kabupaten'] = $request->id_kabupaten;
         $data['description'] = $request->description;
+        $data['koordinat'] = $request->koordinat;
         $bg = $request->file('primary_image');
         $data['primary_image'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
         $destinationPath = 'public/images';
@@ -99,6 +100,7 @@ class nodeCtrl extends Controller
         //
         $data = $request->except('_method','_token');
        $data['nama_node'] = $data['nama'];
+       $data['koordinat'] = $request->koordinat;
        unset($data['nama']);
        unset($data['primary_image']);
         $bg = $request->file('primary_image');

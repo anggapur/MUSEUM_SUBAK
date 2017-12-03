@@ -9,7 +9,31 @@ var STATE = 0;
 
 //
 playMusikBackground();
+getMusikState();
 
+function getMusikState()
+{
+
+	$.ajax({
+	    url: ADMIN+"musikState",
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        if(data.state == 1)
+	        {	        	
+	        	musik.play();	        	
+	        }
+	        else
+	        {
+	        	musik.pause();	        	
+	        }
+
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});
+}
 function playMusikBackground(){
 	$.ajax({
 	    url: ADMIN+"/musikBackground",

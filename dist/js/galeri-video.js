@@ -13,6 +13,7 @@
 	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var param = url.searchParams.get("id");
+	changeLayout(param);
 	//aciton
 	next.click(function(){
 		prev.removeAttr('disabled');
@@ -43,6 +44,22 @@
 	});	
 });
 
+function changeLayout(id)
+{
+	
+	$.ajax({
+	    url: ADMIN+"topik/"+id+"/edit",
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        $('.myTitle').html("Video Gallery<br>"+data.nama);
+	        $('.cover').css('background-image','url('+IMAGES+data.background+')');
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});
+}
 
 function loadContent(param)
 {

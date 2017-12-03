@@ -6,6 +6,25 @@
 <!-- SCRITP OWN -->
     <div class="row">        
         <div class="col-md-4">
+            <!-- COntrols -->
+            <div class="panel panel-default" id="form">
+                <div class="panel-heading">Control Musik</div>
+                <div class="panel-body">
+                    <!-- Rounded switch -->
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label class="labelMusik">Musik Background</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="switch">
+                                <input type="checkbox" id="switch1">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--CRUD  -->
             <div class="panel panel-default" id="form">
                 <div class="panel-heading">Buat Lagu</div>
                 <div class="panel-body">

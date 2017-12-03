@@ -1,6 +1,6 @@
 /*New*/
 body.videosgallery .container.tittles {
-    top: 120px;
+    top: 105px;
 }
 .container.galBody {
     top: 50%;
@@ -249,7 +249,7 @@ svg{
     height: 100%;
     position: absolute;
     background: #9ce0f5;
-
+    
     z-index: 99999;
 }
 

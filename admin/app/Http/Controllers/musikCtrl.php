@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\musik;
+use App\control;
 use Carbon\Carbon;
 
 class musikCtrl extends Controller
@@ -150,5 +151,18 @@ class musikCtrl extends Controller
 
         $query = musik::where('state','click')->first();
         return $query->source;
+    }
+    public function musikControl($state)    
+    {
+        $query = control::where('nama','musik')->update(['state' => $state]);
+        if($query)
+            return Response('success',200);
+        else
+            return Response('failed',210);
+    }
+    public function musikState()
+    {
+        $query = control::where('nama','musik')->first();
+        return $query;
     }
 }

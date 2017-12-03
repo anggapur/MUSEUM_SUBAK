@@ -9,6 +9,6 @@ class node extends Model
 {
     //
     use SoftDeletes;
-    protected $fillable = ['nama_node','id_kabupaten','description','qr_code','primary_image'];
+    protected $fillable = ['nama_node','id_kabupaten','description','qr_code','primary_image','koordinat'];
 
 }

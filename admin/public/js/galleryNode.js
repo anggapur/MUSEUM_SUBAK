@@ -1,10 +1,9 @@
 $(document).ready(function(){
-	 	 
 
-	loadTopiks();
-	loadKategories();
-	loadKategoriesTab();
-	loadAllPhotos();
+	ids = $('#id_node').attr('data');
+
+	loadTopiks();	
+	loadAllPhotos(ids);
 	deleteProses();
 	editProses();
 	STATE = 0;
@@ -29,8 +28,9 @@ $(document).ready(function(){
 	    var formData = new FormData(this);
 	    if(STATE == 0)
 	    {
+
 		    $.ajax({
-		        url: window.location.pathname,
+		        url: HOST+"galleryNode",
 		        type: 'POST',
 		        data: formData,
 		        async: false,
@@ -41,10 +41,9 @@ $(document).ready(function(){
 		            	$('#form-simpan img').attr("src","");
 		            	$("#form-simpan")[0].reset();
 		            	loadTopiks();
-		            	
-		            	cekActiveTabs();
 		            	$('#message').html('Simpan '+title);
 		            	$('#successAlert').show().fadeOut(5000);
+		            	loadAllPhotos(ids);		            	
 		            }	
 		        },
 		        cache: false,
@@ -57,7 +56,7 @@ $(document).ready(function(){
 			ids = $('form').attr('data');	
 			formData.append('_method','patch');		
 			$.ajax({
-		        url: window.location.pathname+"/"+ids,
+		        url: HOST+"galleryNode/"+ids,
 		        type: 'POST',
 		        data: formData,
 		        async: false,
@@ -69,6 +68,7 @@ $(document).ready(function(){
 			            $('#message').html('Edit '+title);
 			            $('#successAlert').show().fadeOut(5000);
 			            createForm(); 
+			            loadAllPhotos(ids);
 			        }
 		        },
 		        cache: false,
@@ -161,10 +161,10 @@ function loadKategoriesTab()
         processData: false
     });
 }
-function loadAllPhotos()
+function loadAllPhotos($id)
 {	
 	$.ajax({
-        url: HOST+"getAllPhotos",
+        url: HOST+"allGalleryNode/"+$id,
         type: 'GET',	        
         async: false,
         dataType : 'JSON',
@@ -240,14 +240,14 @@ function deleteData(id)
 	formData = new FormData(this);
 	formData.append('_method','delete');
 	$.ajax({
-	        url: HOST+"photo/"+id,
+	        url: HOST+"galleryNode/"+id,
 	        type: 'POST',
 	        data: formData,
 	        async: false,
 	        success: function (data) {	            
 	            if(data == "success")
 	            {
-	            	loadTopiks();	
+	            	loadAllPhotos(ids);
 	            	$('#item'+id).hide(300);   
 	            	createForm();         	
 	            }
@@ -281,7 +281,7 @@ function editProses()
 function editData(id)
 {	
 	$.ajax({
-	    url: HOST+"photo/"+id+"/edit",
+	    url: HOST+"galleryNode/"+id+"/edit",
 	    type: 'GET',	        
 	    async: false,
 	    success: function (data) {	            	            	            

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UbahTableDetailTopiks extends Migration
+class CreateControlsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class UbahTableDetailTopiks extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('detail_topiks',function(Blueprint $table){
-            // $table->text('description')->nullable()->change();
+        Schema::create('controls', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nama');
+            $table->string('state');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +29,6 @@ class UbahTableDetailTopiks extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('controls');
     }
 }

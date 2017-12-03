@@ -34,6 +34,11 @@
                             <img id="icon-view" src="#" alt="QR Code" class="img-responsive img-rounded" />
                         </div>
                         <div class="form-group">
+                            <label>Pilih Lokasi</label>
+                            <img src="{{asset('public/peta-bali.jpg')}}" alt="Map Bali" id="selectMap" class="img-responsive img-rounded">
+                            <input type="hidden" name="koordinat" value="" id="koordinat">
+                        </div>                        
+                        <div class="form-group">
                             <input type="submit" name="submit" value="Simpan" id="simpan" class="btn btn-success" >
                             {{csrf_field()}}
                         </div>
@@ -70,6 +75,26 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-danger" id="btnDanger">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Second Modal -->
+
+<div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pin Map</h4>
+      </div>
+      <div class="modal-body">
+        <img src="{{asset('public/peta-bali.jpg')}}" id="selectMapBig" class="img-responsive img-rounded" alt="Map">
+        <img src="{{asset('public/pinmap.png')}}" id="pinmap">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Simpan Map</button>
+        
       </div>
     </div>
   </div>

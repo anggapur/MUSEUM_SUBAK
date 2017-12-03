@@ -1,6 +1,19 @@
 $(document).ready(function(){
-	//load data
-	
+	//get state
+	getMusikState();
+	//when switch change
+	$('#switch1').change(function(){
+		if($(this)[0].checked == true)
+		{
+			changeControl('musik','1');			
+		}
+		else
+		{
+			changeControl('musik','0');	
+		}
+	});
+
+	//load data	
 	allData();
 	deleteProses();
 	editProses();
@@ -71,6 +84,43 @@ $(document).ready(function(){
 	
 	// edit	
 });
+
+function getMusikState()
+{
+
+	$.ajax({
+	    url: HOST+"musikState",
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        if(data.state == 1)
+	        {
+	        	$('#switch1').attr('checked','checked');
+	        }
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});
+}
+function changeControl(where,state)
+{
+	$('#message').html('Ubah State');
+	$('#successAlert').show().fadeOut(5000);
+	$.ajax({
+	    url: HOST+where+"Control/"+state,
+	    type: 'GET',	        
+	    async: false,
+	    success: function (data) {	            	            	            
+	        if(data == "success")  
+	        {	        
+	        }
+	    },
+	    cache: false,
+	    contentType: false,
+	    processData: false
+	});
+}
 
 function editProses()
 {

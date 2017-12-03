@@ -149,7 +149,7 @@ function cetakMedia(jenis, source,desc)
 	{
 		// alert('Keduanya '+desc);
 		$('.description').attr('class','description col-12 col-md-8');
-		$('.images , .description').show();
+		$('.images , .description').fadeIn(300);
 
 		$('.images > a#img > img , .images > a#vid > video').hide();
 		$('.images > a#vid > video').each(function(){

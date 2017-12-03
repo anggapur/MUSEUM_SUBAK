@@ -1,9 +1,13 @@
 $(document).ready(function(){
+	//set modal
+
+
 	//load data
 	loadTopiks();
 	allTopiks();
 	deleteProses();
 	editProses();
+	
 	// preview FIle
 	$("#bg").change(function() {
 	  readURL(this,'#bg-view');
@@ -11,7 +15,52 @@ $(document).ready(function(){
 	$("#icon").change(function() {
 	  readURL(this,'#icon-view');
 	});
+	$('#selectMap').unbind('click').click(function(){
+		bigMap = $('#selectMapBig');
+		$('#myModal2').modal({
+		  backdrop: 'static',
+		  keyboard: false
+		});
+		$('#myModal2').on('shown.bs.modal',function(){			
+			koorVal = $('#koordinat').val();
+			if(koorVal !== "")
+			{
+				koorVal = koorVal.split(',');	
+				imgW = bigMap.width();		    
+			    imgH = bigMap.height();	
+				corXpercentage = koorVal[0];
+			    corYpercentage = koorVal[1];
+			    // alert("KoorVal : "+koorVal[0]+" "+koorVal[1]);
+			    // alert("Big Map : "+imgW+" "+imgH);
+			    posX = (corXpercentage/100)*imgW;
+			    posY = (corYpercentage/100)*imgH;			    
+			    // alert("Position : "+posX+" "+posY);
+			    $('#pinmap').animate({'left':posX+'px' , 'top':posY+'px'});
+			}		
+		});
+		//cek
+		
+		
+		koordinatInput = $('#koordinat');	
 
+		bigMap.unbind('click').click(function(e) {			
+		    offset = $(this).offset();
+		    corX = e.pageX - offset.left;
+		    corY = e.pageY - offset.top;
+		    imgW = bigMap.width();		    
+		    imgH = bigMap.height();		    
+		    corXpercentage = corX/imgW*100;
+		    corYpercentage = corY/imgH*100;
+		    
+		    posX = (corXpercentage/100)*imgW;
+		    posY = (corYpercentage/100)*imgH;
+		    $('#pinmap').animate({'left':posX+'px' , 'top':posY+'px'});
+		    koordinatInput.val(corXpercentage+','+corYpercentage);
+		    
+		  });
+
+
+	});
 	//click form
 	$("#form-simpan").submit(function(){
 		tinyMCE.triggerSave();			
@@ -27,7 +76,7 @@ $(document).ready(function(){
 		            console.log(data);
 		            if(data == "success")
 		            {	            	
-		            	$('#form-simpan img').attr("src","");
+		            	$('#form-simpan img').not('#selectMap').attr("src","");
 		            	$("#form-simpan")[0].reset();
 		            	loadTopiks();
 		            	allTopiks();	      
@@ -52,7 +101,8 @@ $(document).ready(function(){
 		        success: function (data) {	
 		        	if(data == "success")		            
 		        	{
-			        	$('#form-simpan img').attr("src","");
+
+			        	$('#form-simpan img').not('#selectMap').attr("src","");
 			            $("#form-simpan")[0].reset();   
 			            loadTopiks();
 			            allTopiks();	
@@ -104,7 +154,7 @@ function createForm()
 	STATE = 0;
 	$('#select').find('option').removeAttr('selected');
 	$('#select option[value=0]').attr('selected','selected');
-	$('#form-simpan img').attr("src","");
+	$('#form-simpan img').not('#selectMap').attr("src","");
 	$("#form-simpan")[0].reset();
 	
 }
@@ -117,6 +167,7 @@ function editForm(data,id)
 	$('#form .panel-heading').html('Edit Node');
 	$('#bg , #icon').removeAttr('required');
 	$('#form form').attr('action',HOST+'node/'+id);
+	$('#koordinat').val(data.koordinat);
 	STATE = 1;
 	$('#select').find('option').removeAttr('selected');
 	$('#select option[value='+data.id_kabupaten+']').attr('selected','selected');	
@@ -125,7 +176,7 @@ function editForm(data,id)
 function deleteProses()
 {
 	$('.delete').click(function(){
-		$('#myModal').modal('show') 
+		$('#myModal').modal('show');
 		$('#btnDanger').attr('data',$(this).attr('data'));
 		$('#btnDanger').click(function(){
 			deleteData($(this).attr('data'));

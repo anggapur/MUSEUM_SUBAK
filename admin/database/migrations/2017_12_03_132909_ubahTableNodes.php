@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UbahTableDetailTopiks extends Migration
+class UbahTableNodes extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class UbahTableDetailTopiks extends Migration
     public function up()
     {
         //
-        Schema::table('detail_topiks',function(Blueprint $table){
-            // $table->text('description')->nullable()->change();
+        Schema::table('nodes',function(Blueprint $table){
+            $table->text('koordinat');
         });
     }
 
