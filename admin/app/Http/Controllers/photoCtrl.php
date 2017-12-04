@@ -45,6 +45,10 @@ class photoCtrl extends Controller
     {
         //
         $data = $request->all();
+        if($request->description == NULL)
+        {
+            $data['description'] = "";
+        }
         //cek order
         $order = galleryPhoto::where('id_kategori',$data['id_kategori'])->orderBy('id','DESC');
         if(count($order->get()) > 0)
@@ -103,6 +107,10 @@ class photoCtrl extends Controller
         //
         $data['nama'] = $request->nama;
         $data['description'] = $request->description;
+         if($request->description == NULL)
+        {
+            $data['description'] = "";
+        }
         $data['id_topik'] = $request->id_topik;
         $data['id_kategori'] = $request->id_kategori;
         $bg = $request->file('source');

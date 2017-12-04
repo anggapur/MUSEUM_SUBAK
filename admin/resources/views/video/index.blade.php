@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea id="description" name="description" class="form-control" placeholder="Masukan Description" required></textarea>
+                            <textarea id="description" name="description" class="form-control" placeholder="Masukan Description"></textarea>
                         </div>                        
                         <div class="form-group">
                             <label>Bagian Dari Subtopik</label>

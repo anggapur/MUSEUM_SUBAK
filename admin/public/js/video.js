@@ -21,7 +21,7 @@ $(document).ready(function(){
 	});
 	// Submit Form
 	$("#form-simpan").submit(function(){
-
+		tinyMCE.triggerSave();	
 	    var formData = new FormData(this);
 	    if(STATE == 0)
 	    {
@@ -309,6 +309,7 @@ function editForm(data,id)
 	$('#select1 , #select2').find('option').removeAttr('selected');
 	$('#select1 option[value='+data.id_topik+']').attr('selected','selected');
 	$('#select2 option[value='+data.id_kategori+']').attr('selected','selected');
+	tinyMCE.activeEditor.setContent(data.description);
 	
 }
 function createForm()
