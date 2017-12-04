@@ -66,6 +66,7 @@ Route::get('musikState','musikCtrl@musikState');
 //kabupaten
 Route::resource('kabupaten','kabupatenCtrl');
 Route::get('allDataKabupaten','kabupatenCtrl@allData');
+Route::get('allDataNode','kabupatenCtrl@allDataNode');
 //node
 Route::resource('node','nodeCtrl');
 Route::get('mainKabupaten','nodeCtrl@mainKabupaten');
@@ -73,5 +74,6 @@ Route::get('allNodes','nodeCtrl@allNodes');
 //Gallery Node
 Route::resource('galleryNode','galleryNodeCtrl');
 Route::get('allGalleryNode/{id}','galleryNodeCtrl@allGalleryNode');
+
 
 Route::get('/home', 'HomeController@index')->name('home');

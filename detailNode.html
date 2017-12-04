@@ -15,7 +15,7 @@
         <script src="dist/js/modernizr.custom.js"></script>
         <link rel="stylesheet" href="admin/public/fancybox-master/dist/jquery.fancybox.css">
     </head>
-    <body class="index detail detailScroll">
+    <body class="index detail detailNode">
         <!-- Loader -->
         <div class="loading">
             <div class="container">
@@ -44,33 +44,28 @@
                     <div class="boxtron container-fluid">
                         <div class="row boxwrap justify-content-md-center">
                             <div class="col-12 col-md-8 description">
-                                Subak adalah organisasi kemasyarakatan yang khusus mengatur sistem pengairan sawah yang digunakan dalam cocok tanam padi di Bali, Indonesia. Subak ini biasanya memiliki pura yang dinamakan Pura Uluncarik, atau Pura Bedugul, yang khusus dibangun oleh para pemilik lahan dan petani yang diperuntukkan bagi dewi kemakmuran dan kesuburan dewi Sri. Sistem pengairan ini diatur oleh seorang pemuka adat yang juga adalah seorang petani di Bali.
+                                
                             </div>
-                            <div class="col-12 col-md-4 images">
+                            <div class="col-12 col-md-4 images" style="text-align: center">
                                 <a id="img" href="" data-fancybox="gallery" data-caption="">
-                                    <img src="source/bg2.jpg" class="img-fluid img-rounded">
+                                    <img src="" class="img-fluid img-rounded">
                                 </a>
-                                <a id="vid">
-                                    <video class="img-fluid img-rounded" controls>
-                                      <source src="" id="video_here">
-                                        Your browser does not support HTML5 video.
-                                    </video>
-                                </a>
-                               <a class="fancybox" style="display: none;" href="">open video</a>
+                                <button id="toGalleryNode" class="btn btn-sm btn-default noMar">Lihat Lebih Banyak Gambar</button>
+                                <div class="clear"></div>
                             </div>
                         </div>
-                       <div class="row button-navigation" data="0">
-                            <div class="col-12 col-md-2">
+                       <!-- <div class="row button-navigation" data="0">
+                            <div class="col-2">
                                 <button class="btn btn-sm btn-default" id="prev" disabled><i class="fa fa-backward" aria-hidden="true"></i>  Sebelumnya</button>
                             </div>
-                            <div class="col-12 col-md-8 paging textCenter">
+                            <div class="col-8 paging textCenter">
 
                             </div>
-                            <div class="col-12 col-md-2">
+                            <div class="col-2">
                                  <button class="btn btn-sm btn-default float-right" id="next">Selanjutnya <i class="fa fa-forward" aria-hidden="true"></i></button>
                             </div>
                            
-                        </div>
+                        </div> -->
                         
                     </div>  
                     <div class="container-fluid noPad">
@@ -105,7 +100,7 @@
         <script type="text/javascript" src="dist/js/loader.js"></script>
         <script type="text/javascript" src="admin/public/fancybox-master/dist/jquery.fancybox.js"></script>
         <script type="text/javascript" src="dist/js/main.js"></script>
-        <script type="text/javascript" src="dist/js/detail.js"></script>
+        <script type="text/javascript" src="dist/js/detailNode.js"></script>
         <script type="text/javascript">
         $(".fancybox").fancybox({
             type: "iframe",

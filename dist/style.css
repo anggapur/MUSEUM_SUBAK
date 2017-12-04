@@ -1,3 +1,90 @@
+/*Detail*/
+.galleryNode .col-6.col-md-2 {
+    padding-bottom: 20px;
+}
+.detailNode
+ .description {
+    overflow-y: scroll;
+}
+
+img#qrcode {
+    width: 100px;
+    position: absolute;
+    right: 15px;
+    bottom: 0px;
+}
+.clear{
+  clear: both;
+}
+#toGalleryNode{
+  margin-top: 10px;
+}
+a#img {
+    outline: none;
+    border: none;
+}
+/*Pulau Bali*/
+body.pulauBali .images {
+    overflow-y: scroll;
+}
+/*animation bounce*/
+.bounce{
+  animation-name: bounceAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounceAnimation{
+  0%{
+    transform: scale(1) translateX(-50%) translateY(-100%);
+  }
+  /*25%
+  {
+    transform: scale(1.125) translateX(-50%) translateY(-100%);
+  }
+  50%
+  {
+    transform: scale(1.25) translateX(-50%) translateY(-100%); 
+  }
+  75%
+  {
+    transform: scale(1.375) translateX(-50%) translateY(-100%);
+  }*/
+  100%{
+    transform: scale(1.5) translateX(-50%) translateY(-100%);
+  }
+}
+
+.maps{
+  position: relative;
+}
+#myMaps{
+    position: relative;
+    left: 0;
+    top: 0;
+}
+img.pinMap {
+    width: 10px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    transform: translateX(-50%) translateY(-100%);
+}
+.parent , .node{
+  cursor: pointer;
+}
+.groupList .node {
+    padding-left: 50px;
+    background: #eee;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.img-responsive{
+  width:100%;
+}
+.img-rounded{
+  border-radius: 5px;
+}
 /*New*/
 body.videosgallery .container.tittles {
     top: 105px;
@@ -26,7 +113,7 @@ body.detail
 }
 
 .row.justify-content-md-center.main {
-    height: 500px;
+    max-height: 500px;
     overflow-y: scroll;
 }
 .container.tittles {
@@ -62,9 +149,10 @@ body,html{
 , .boxwrap .description b 
 , .boxwrap .description a 
 , .fancybox-caption
+,.boxwrap .description p
 /*, .gallery p.h6.text-center.title*/
 {
-  font-family: "Segoe UI","Roboto","Helvetica Neue","Arial","sans-serifbody";
+  font-family: "Segoe UI","Roboto","Helvetica Neue","Arial","sans-serifbody" !important;
 }
 /*scroll di description*/
 .row.boxwrap {
@@ -154,7 +242,7 @@ img.img-fluid-logo
 }
 
 body.index .col-md-3.text-center , .col-12.col-xs-6.col-sm-6.col-md-4.text-center{
-    padding: 40px 20px;
+    padding: 30px 20px;
 }
 body.index h1 {
     padding: 30px 10px 20px 10px;
@@ -257,6 +345,13 @@ svg{
 /*responsive*/
 @media only screen and (max-width: 960px)
 {
+    img#qrcode {
+      width: 100px;
+       position: relative; 
+      right: 0px;
+      bottom: 0px;
+      margin-top: 10px;
+    }
     body.index{
         overflow-y: scroll;
     }
@@ -320,6 +415,70 @@ svg{
     .row.justify-content-md-center.main
     {
         overflow: initial;
+    }
+
+    /*Responsive*/
+     /*Responsive*/
+    .container.tittles {
+        left: 0;
+        padding-top:10px;
+        position:relative;
+    }
+
+    .container.body {
+        padding-top: 0px;
+    }
+
+    body.index .container.body {
+        top: 0%;
+        transform: none;
+    }
+    /*Pulau Bali*/
+    body.pulauBali ul.list-group.groupList {
+        padding-top: 15px;
+    }
+    body.pulauBali .row.boxwrap{
+      padding-bottom: 0px;
+    }
+    body.pulauBali .show-sm {
+        display: block !important;
+    }
+    /*Detail Node*/
+    body.detailNode .container.detBody {
+        padding-top: 20px;
+    }
+
+    body.detailNode .titleTop {
+        padding-top: 20px;
+    }
+    /*Gallery Node*/
+    body.galleryNode button#back {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    body.galleryNode .boxwrap .col-12 {
+      margin-bottom: 10PX;
+  }
+    /*Subtipik*/
+    body.subTopik .row.justify-content-md-center.main{
+      max-height: initial;
+    }
+    /*Detil*/
+    .detail .row.button-navigation
+    {
+      position: relative;
+    }
+    .detail .boxwrap .description{
+      overflow: hidden !important;
+    }
+    body.detail
+     .button-navigation > div {
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    body.detail .button-navigation > div button#next {
+        float: none !important;
     }
 }
 
@@ -449,6 +608,17 @@ button:hover
     overflow-y: scroll;
 }
 
+.pulauBali ::-webkit-scrollbar
+{
+    width: 10px !important;
+    background-color: rgba(245, 245, 245,0.4);
+    
+}
+
+.pulauBali ::-webkit-scrollbar-thumb
+{
+    background-color: #ffffff;
+}
 
 .index ::-webkit-scrollbar
 {
@@ -461,6 +631,8 @@ button:hover
 {
     background-color: #ffffff;
 }
+
+
 
 .gallery ::-webkit-scrollbar
 {

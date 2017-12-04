@@ -88,8 +88,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Pin Map</h4>
       </div>
-      <div class="modal-body">
-        <img src="{{asset('public/peta-bali.jpg')}}" id="selectMapBig" class="img-responsive img-rounded" alt="Map">
+      <div class="modal-body" style="padding: 0px;">
+        <img src="{{asset('public/peta-bali.jpg')}}" id="selectMapBig" class="img-responsive img-rounded" alt="Map" style="width:100%">
         <img src="{{asset('public/pinmap.png')}}" id="pinmap">
       </div>
       <div class="modal-footer">
