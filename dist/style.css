@@ -480,6 +480,9 @@ svg{
     body.detail .button-navigation > div button#next {
         float: none !important;
     }
+    body.videosgallery .container.tittles {
+        top: 10px;
+    }
 }
 
 a:hover

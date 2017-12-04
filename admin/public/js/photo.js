@@ -174,6 +174,11 @@ function loadAllPhotos()
             datas = data.data;            
             $('.bodyData').html("");
             $.each(datas, function(index) {
+            	if(index%4 == 0)
+            	{
+            		clear = "<div class='clearfix' style='clear:both;'></div>";
+            		$('.bodyData').append(clear);            		
+            	}
             	apen = '<div class="col-md-3" id="item'+datas[index].id+'">'+
             			'<i title="Edit" class="edit photoTool fa fa-pencil-square-o" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<i title="Hapus" class="delete photoTool fa fa-trash" aria-hidden="true" data="'+datas[index].id+'"></i>'+
@@ -206,6 +211,12 @@ function loadImageByTabs(ids)
             datas = data.data;            
             $('.bodyData').html("");
             $.each(datas, function(index) {
+
+            	if(index%4 == 0)
+            	{
+            		clear = "<div class='clearfix' style='clear:both;'></div>";
+            		$('.bodyData').append(clear);            		
+            	}
             	apen = '<div class="col-md-3" id="item'+datas[index].id+'">'+
             			'<i title="Edit" class="edit photoTool fa fa-pencil-square-o" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<i title="Hapus" class="delete photoTool fa fa-trash" aria-hidden="true" data="'+datas[index].id+'"></i>'+
