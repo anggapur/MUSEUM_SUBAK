@@ -55,15 +55,25 @@ class topikCtrl extends Controller
         //
         $data['nama'] = $request->nama;
         $data['id_parent'] = $request->id_parent;
+        $data['icon'] = "";
+        $data['background'] = "";
+        //gambar utama
         $bg = $request->file('background');
-        $data['background'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
-        $destinationPath = 'public/images';
-        $move = $bg->move($destinationPath,$data['background']);
+        if($bg !== NULL)
+        {
+            $data['background'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
+            $destinationPath = 'public/images';
+            $move = $bg->move($destinationPath,$data['background']);
+        }
 
+        //icopn
         $icon = $request->file('icon');
-        $data['icon'] = Carbon::now()->format('dmYhis').$icon->getClientOriginalName();
-        $destinationPath = 'public/images';
-        $move = $icon->move($destinationPath,$data['icon']);
+        if($icon !== NULL)
+        {
+            $data['icon'] = Carbon::now()->format('dmYhis').$icon->getClientOriginalName();
+            $destinationPath = 'public/images';
+            $move = $icon->move($destinationPath,$data['icon']);
+        }
         // inset
         $query = topik::create($data);
 

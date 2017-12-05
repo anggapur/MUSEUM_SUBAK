@@ -42,10 +42,18 @@ class nodeCtrl extends Controller
         $data['id_kabupaten'] = $request->id_kabupaten;
         $data['description'] = $request->description;
         $data['koordinat'] = $request->koordinat;
+        if($request->description == NULL)
+        {
+            $data['description'] = "";
+        }
         $bg = $request->file('primary_image');
-        $data['primary_image'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
-        $destinationPath = 'public/images';
-        $move = $bg->move($destinationPath,$data['primary_image']);
+        $data['primary_image'] ="";
+        if($bg !== NULL)
+        {
+            $data['primary_image'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
+            $destinationPath = 'public/images';
+            $move = $bg->move($destinationPath,$data['primary_image']);
+        }
 
         $icon = $request->file('qr_code');
         $data['qr_code'] = "";
@@ -84,7 +92,7 @@ class nodeCtrl extends Controller
     public function edit($id)
     {
         //
-         $data = node::where('id',$id)->first();
+         $data = node::where('id',$id)->withCount('getGallery')->first();
         return $data;
     }
 
@@ -103,6 +111,10 @@ class nodeCtrl extends Controller
        $data['koordinat'] = $request->koordinat;
        unset($data['nama']);
        unset($data['primary_image']);
+       if($request->description == NULL)
+        {
+            $data['description'] = "";
+        }
         $bg = $request->file('primary_image');
         if($bg !== NULL)
         {

@@ -20,12 +20,14 @@ function getMusikState()
 	    async: false,
 	    success: function (data) {	            	            	            
 	        if(data.state == 1)
-	        {	        	
-	        	musik.play();	        	
+	        {	
+	        	changeMuteBtn(data.state);          	
+	        	musik.play();	 
 	        }
 	        else
 	        {
-	        	musik.pause();	        	
+	        	changeMuteBtn(data.state);      	
+	        	musik.pause();	  	        	
 	        }
 
 	    },
@@ -33,6 +35,24 @@ function getMusikState()
 	    contentType: false,
 	    processData: false
 	});
+}
+
+function changeMuteBtn(state)
+{
+	if(state == 0)
+	{
+		musik.pause();
+		$('#muteBtn').unbind('click').click(function(){
+			changeMuteBtn(1);
+		}).attr('data-state',state).find('i').removeClass('fa-microphone').addClass('fa-microphone-slash');
+	}
+	else
+	{	
+		musik.play();
+		$('#muteBtn').unbind('click').click(function(){
+			changeMuteBtn(0);
+		}).attr('data-state',state).find('i').removeClass('fa-microphone-slash').addClass('fa-microphone');
+	}
 }
 function playMusikBackground(){
 	$.ajax({

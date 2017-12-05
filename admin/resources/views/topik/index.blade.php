@@ -21,12 +21,12 @@
                         </div>
                         <div class="form-group">
                             <label>Background</label>
-                            <input type="file" name="background" class="form-control" id="bg" required>
+                            <input type="file" name="background" class="form-control" id="bg">
                              <img id="bg-view" src="#" alt="Background Image" class="img-responsive img-rounded" />
                         </div>
                         <div class="form-group">
                             <label>Icon</label>
-                            <input type="file" name="icon" class="form-control" id="icon" required>
+                            <input type="file" name="icon" class="form-control" id="icon">
                             <img id="icon-view" src="#" alt="Icon Image" class="img-responsive img-rounded" />
                         </div>
                         <div class="form-group">

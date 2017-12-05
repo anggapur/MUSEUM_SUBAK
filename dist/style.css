@@ -1,3 +1,20 @@
+/*Mute Btn*/
+.gallery button#muteBtn, .videosgallery button#muteBtn {
+    bottom: 18px;
+}
+.tambahRight {
+    margin-right: 50px !important;
+}
+button#muteBtn {
+    position: absolute;
+    bottom: 10px;
+    border-radius: 100px;
+    opacity: 0.7;
+    right: 212px;
+    width:45px;
+    height:45px;
+    z-index: 99998;
+}
 /*Detail*/
 .galleryNode .col-6.col-md-2 {
     padding-bottom: 20px;
@@ -63,7 +80,11 @@ body.pulauBali .images {
     left: 0;
     top: 0;
 }
-img.pinMap {
+.asMark
+{
+  padding-right: 5px;
+}
+i.pinMap {
     width: 10px;
     left: 0px;
     top: 0px;
@@ -345,6 +366,13 @@ svg{
 /*responsive*/
 @media only screen and (max-width: 960px)
 {
+
+    .tambahRight {
+        margin-right: 0px;
+    }
+    #muteBtn{
+      display: none;
+    }
     img#qrcode {
       width: 100px;
        position: relative; 

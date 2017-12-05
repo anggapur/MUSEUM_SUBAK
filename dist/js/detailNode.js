@@ -53,4 +53,20 @@ function setContent(data)
 		qrcode = '<img src="'+IMAGES+data.qr_code+'" id="qrcode" class="img-rounded">';
 		$('.images').append(qrcode);
 	}
+	//cek gambar
+	if(data.primary_image == "")
+	{
+		$('.images').hide();
+		$('.description').removeClass('col-md-8').addClass('col-md-12');
+	}
+	else if(data.description == "")
+	{
+		$('.description').hide();
+		$('.images').removeClass('col-md-4').addClass('col-md-7');
+	}
+
+	// cek jumlah foto do gallery
+	if(data.get_gallery_count <= 0){
+		$('#toGalleryNode').hide();
+	}
 }	

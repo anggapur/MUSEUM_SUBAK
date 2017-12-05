@@ -25,7 +25,7 @@
                         </div>    
                         <div class="form-group">
                             <label>Gambar Utama</label>
-                            <input type="file" name="primary_image" class="form-control" id="bg" required>
+                            <input type="file" name="primary_image" class="form-control" id="bg">
                              <img id="bg-view" src="#" alt="Gambar Utama" class="img-responsive img-rounded" />
                         </div>
                         <div class="form-group">

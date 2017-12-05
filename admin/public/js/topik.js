@@ -99,7 +99,7 @@ function editData(id)
 function createForm()
 {	
 	$('#form .panel-heading').html('Buat Topik');
-	$('#bg , #icon').attr('required','required');
+	// $('#bg , #icon').attr('required','required');
 	$('#form form').attr('action',HOST+'topik');
 	STATE = 0;
 	$('#select').find('option').removeAttr('selected');
@@ -114,7 +114,7 @@ function editForm(data,id)
 	$('#bg-view').attr('src',IMAGES+data.background);
 	$('#icon-view').attr('src',IMAGES+data.icon);
 	$('#form .panel-heading').html('Edit Topik');
-	$('#bg , #icon').removeAttr('required');
+	// $('#bg , #icon').removeAttr('required');
 	$('#form form').attr('action',HOST+'topik/'+id);
 	STATE = 1;
 	$('#select').find('option').removeAttr('selected');

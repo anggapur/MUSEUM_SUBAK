@@ -1,6 +1,6 @@
 	$(document).ready(function(){
 	//mute musik
-	musik.pause();
+	// musik.pause();
 	//deklarasi variabel
 	boxwrap = $('.vidlist');
 	height = boxwrap.height();

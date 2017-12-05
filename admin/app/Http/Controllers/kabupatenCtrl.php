@@ -109,7 +109,10 @@ class kabupatenCtrl extends Controller
     }
     public function allDataNode()
     {
-        $data['data'] = kabupaten::with('getNodes')->get();    
+        $data['data'] = kabupaten::with('getNodes')
+                        ->withCount('getNodes')
+                        ->has('getNodes','>',0)
+                        ->get();    
         return $data;
 
     }

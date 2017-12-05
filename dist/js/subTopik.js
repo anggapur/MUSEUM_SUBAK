@@ -13,9 +13,18 @@ $(document).ready(function(){
 	    success: function (data) {	            	            	            
 	    	$('.main').empty();
 	    	datas = data.data;
-	    	$.each(datas,function(index){	    		
+	    	$.each(datas,function(index){	  
+	    		//Cek
+	    		if(datas[index].icon == "")	  		
+	  			{
+	  				icons = HOST+"source/plant.png";
+	  			}
+	  			else
+	  			{
+	  				icons = IMAGES+datas[index].icon;
+	  			}  		
 	    		apen = 	'<div id="item'+datas[index].id+'" class="col-12 col-sm-6 col-md-3 text-center" data="'+datas[index].id+'" data-title="'+datas[index].nama+'" data-bg="'+datas[index].background+'">'+
-		                    '<img onclick="goToDetail('+datas[index].id+','+param+')" src="'+IMAGES+datas[index].icon+'" class="img-fluid-logo">'+
+		                    '<img onclick="goToDetail('+datas[index].id+','+param+')" src="'+icons+'" class="img-fluid-logo">'+
 		                    '<p onclick="goToDetail('+datas[index].id+','+param+')" class="h4">'+datas[index].nama+'</p>'+
 		                '</div>';
 	    		$('.main').append(apen);
