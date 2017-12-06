@@ -81,7 +81,15 @@ function loadContent(param)
 	    success: function (data) {	            	            	            
 	    	$('.boxwrap').empty();
 	    	dataChild = data.data;
+	    	//cek
+	    	if(dataChild.length <=0)
+	    	{
+	    		$('#next , #prev').hide();
+	    		$('.boxwrap').append("<h4 style='text-align:center;width:100%;color:white;'>Maaf Photo Belum Tersedia</h4>");
+	    	}
+
 	    	$.each(dataChild,function(i){
+
 	    		src = dataChild[i].source;
 	    		ext = (src.split('.')[1]); 
 	    			
@@ -110,6 +118,13 @@ function loadContent(param)
                         '</div>';
                 $('.boxwrap').append(apen);
     		});
+
+    		if ($('.boxwrap').get(0).offsetHeight < $('.boxwrap').get(0).scrollHeight) {
+			    //alert('overflow');
+			} else {
+			    //alert('not overflow');
+			    $('#next,#prev').hide();
+			}
 	    },
 	    cache: false,
 	    contentType: false,

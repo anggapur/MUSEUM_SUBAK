@@ -1,3 +1,10 @@
+body.galleryNode .boxglass {
+    margin-top: 10px;
+}
+
+body.galleryNode #next {
+    margin-right: 57px;
+}
 h4#myModalLabel{
   width: 100%;
   text-align: center;
@@ -374,7 +381,9 @@ svg{
 /*responsive*/
 @media only screen and (max-width: 960px)
 {
-
+    body.galleryNode #next , body.galleryNode #prev{
+      display: none;
+    }
     .tambahRight {
         margin-right: 0px;
     }
