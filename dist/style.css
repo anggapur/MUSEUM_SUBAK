@@ -1,3 +1,11 @@
+h4#myModalLabel{
+  width: 100%;
+  text-align: center;
+}
+div#myModals {
+    top: 50%;
+    transform: translateY(-60%);
+}
 /*Mute Btn*/
 .gallery button#muteBtn, .videosgallery button#muteBtn {
     bottom: 18px;

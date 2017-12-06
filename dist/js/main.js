@@ -44,14 +44,14 @@ function changeMuteBtn(state)
 		musik.pause();
 		$('#muteBtn').unbind('click').click(function(){
 			changeMuteBtn(1);
-		}).attr('data-state',state).find('i').removeClass('fa-microphone').addClass('fa-microphone-slash');
+		}).attr('data-state',state).find('i').removeClass('fa-volume-up').addClass('fa-volume-off');
 	}
 	else
 	{	
 		musik.play();
 		$('#muteBtn').unbind('click').click(function(){
 			changeMuteBtn(0);
-		}).attr('data-state',state).find('i').removeClass('fa-microphone-slash').addClass('fa-microphone');
+		}).attr('data-state',state).find('i').removeClass('fa-volume-off').addClass('fa-volume-up');
 	}
 }
 function playMusikBackground(){

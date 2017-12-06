@@ -42,6 +42,18 @@ $(document).ready(function(){
 		}, 500);
 
 	});	
+
+	$('.boxglass video').unbind('click').click(function(){
+		$('#myModal').modal('show');		
+		source = VIDEOS+$(this).attr('data-video');		
+		$('#videoPlayer').attr('src',source);
+		nama = $(this).attr('data-title');		
+		$('h4#myModalLabel').html(nama);
+	});
+
+	$('#myModal').on('hidden.bs.modal', function (e) {
+		$('#videoPlayer').get(0).pause();
+	})
 });
 
 function changeLayout(id)
@@ -70,11 +82,28 @@ function loadContent(param)
 	    	$('.boxwrap').empty();
 	    	dataChild = data.data;
 	    	$.each(dataChild,function(i){
+	    		src = dataChild[i].source;
+	    		ext = (src.split('.')[1]); 
+	    			
+            	if(ext == 'jpg' || ext == 'jpeg' || ext == 'png')
+            	{
+            		src = '<a href="'+IMAGES+dataChild[i].source+'" data-fancybox="gallery" data-caption="'+dataChild[i].nama+'">'+
+                                	'<img src="'+IMAGES+dataChild[i].source+'" class="rounded img-fluid" alt="...">'+
+                                '</a>';
+            	}
+            	else
+            	{
+            		src =  '<video class="img-responsive" style="z-index:99999;position:relative;" data-title="'+dataChild[i].nama+'" data-video="'+dataChild[i].source+'">'+            		
+							'<source src="'+HOST+"admin/public/videos/"+dataChild[i].source+'" id="video_here">'+
+                                'Your browser does not support HTML5 video.'+
+                            '</video>';
+                            
+
+            	}
+
     			apen =  '<div class="col-12 col-sm-4 col-md-2">'+
                             '<div class="boxglass">'+
-                            	'<a href="'+IMAGES+dataChild[i].source+'" data-fancybox="gallery" data-caption="'+dataChild[i].nama+'">'+
-                                	'<img src="'+IMAGES+dataChild[i].source+'" class="rounded img-fluid" alt="...">'+
-                                '</a>'+
+                            	src+
                                 '<p class="h6 text-center title">'+dataChild[i].nama+'</p>'+
                                 '<div class="blurry"></div>'+
                             '</div>'+
@@ -87,4 +116,9 @@ function loadContent(param)
 	    processData: false
 	});	
 
+}
+
+function makeVid(param)
+{
+	alert(param);
 }

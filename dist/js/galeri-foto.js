@@ -66,8 +66,19 @@ function loadContent(param)
 	    url: ADMIN+"/kategori/getPhotoGallery/"+param,
 	    type: 'GET',	        
 	    async: false,
-	    success: function (data) {	            	            	            
-	    	$('.boxwrap').empty();
+	    success: function (data) {
+	    	//cek apakah ada data
+	    	if(data.length <= 0)	            	            	            
+	    	{
+	    		$('#next , #prev').hide();
+	    		apen = '<h4 style="width:100%;text-align:center;font-family:script MT;color:white">Maaf Foto dalam Gallery Ini belum Tersedia</h4>';
+	    		$('.boxwrap').append(apen);	    		
+	    	}
+	    	else
+	    	{
+	    		$('.boxwrap').empty();
+	    	}
+	    	
 	    	$.each(data,function(index){
 	    		apen =  '<div class="w-100"></div>'+
 	    				'<div class="col-12">'+
@@ -93,6 +104,15 @@ function loadContent(param)
                     $('.boxwrap').append(apen);
 	    		});
 	    	});
+
+    		//
+    		// alert($('.boxwrap').get(0).offsetHeight+" "+$('.boxwrap').get(0).scrollHeight);
+    		if ($('.boxwrap').get(0).offsetHeight < $('.boxwrap').get(0).scrollHeight) {
+			    //alert('overflow');
+			} else {
+			    //alert('not overflow');
+			    $('#next,#prev').hide();
+			}
 	    },
 	    cache: false,
 	    contentType: false,

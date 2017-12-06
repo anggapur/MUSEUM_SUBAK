@@ -42,8 +42,16 @@ class galleryNodeCtrl extends Controller
        
         //image
         $bg = $request->file('source');
-        $data['source'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
-        $destinationPath = "public/images";
+        $data['source'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();        
+        if(in_array($bg->getClientOriginalExtension(),['png','jpg','jpeg']))        
+        {
+            $destinationPath = 'public/images';            
+        }
+        else
+        {
+            $destinationPath = 'public/videos';            
+        }
+        
         $move = $bg->move($destinationPath,$data['source']);        
         $query = galleryNode::create($data);
         if($query)
@@ -95,7 +103,14 @@ class galleryNodeCtrl extends Controller
         if($bg !== NULL)
         {
             $data['source'] = Carbon::now()->format('dmYhis').$bg->getClientOriginalName();
-            $destinationPath = 'public/images';
+            if(in_array($bg->getClientOriginalExtension(),['png','jpg','jpeg']))        
+            {
+                $destinationPath = 'public/images';            
+            }
+            else
+            {
+                $destinationPath = 'public/videos';            
+            }
             $move = $bg->move($destinationPath,$data['source']);
         }
         $query = galleryNode::where('id',$id)->update($data);

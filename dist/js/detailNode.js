@@ -16,6 +16,7 @@ $(document).ready(function(){
 
 	});	
 	$('#toGalleryNode').click(function(){		
+		playMusikClick(); 
 		setTimeout(function(){
 	 		$('.loading').fadeIn("slow" , function(){
 	 			$('.container.body').hide();

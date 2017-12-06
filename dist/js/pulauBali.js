@@ -92,7 +92,7 @@ function showChild(id){
 
 function goToDet(id)
 {
-	
+	playMusikClick(); 
 	$('#pin'+id).addClass('bounce');
 	setTimeout(function(){
 		window.location.href = HOST+"detailNode.html?id="+id;

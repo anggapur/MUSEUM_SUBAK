@@ -67,8 +67,20 @@ function loadContent(param)
 	    url: ADMIN+"/kategori/getVideoGallery/"+param,
 	    type: 'GET',	        
 	    async: false,
-	    success: function (data) {	            	            	            
-	    	$('.vidlist').empty();
+	    success: function (data) {	
+	    	if(data.length <= 0)	            	            	            
+	    	{
+	    		$('#next , #prev').hide();
+	    		apen = '<h4 style="width:100%;text-align:center;font-family:script MT;color:white">Maaf Video dalam Gallery Ini belum Tersedia</h4>';
+	    		$('.vidlist').append(apen);	 
+	    		$('.vidlist').removeClass('	col-sm-4').addClass('col-sm-12');
+	    		$('.vidlist').siblings('.col-sm-8').hide();   		
+	    	}
+	    	else
+	    	{
+	    		$('.vidlist').empty();
+	    	}            	            	            
+	    	
 	    	$.each(data,function(index){
 	    		apen =  '<div class="w-100"></div>'+
 	    				'<div class="row forAlert">'+
@@ -99,6 +111,13 @@ function loadContent(param)
                     $('.vidlist').append(apen);
 	    		});
 	    	});
+	    	//cek
+	    	if ($('.vidlist').get(0).offsetHeight < $('.vidlist').get(0).scrollHeight) {
+			    //alert('overflow');
+			} else {
+			    //alert('not overflow');
+			    $('#next,#prev').hide();
+			}
 	    },
 	    cache: false,
 	    contentType: false,

@@ -10,7 +10,47 @@ $(document).ready(function(){
 	title = "Photo";
 	// Previrew
 	$("#bg").change(function() {
-	  readURL(this,'#bg-view');
+	  
+	  // get the file name, possibly with path (depends on browser)
+        var filename = $(this).val();
+
+        // Use a regular expression to trim everything before final dot
+        var extension = filename.replace(/^.*\./, '');
+
+        // Iff there is no dot anywhere in filename, we would have extension == filename,
+        // so we account for this possibility now
+        if (extension == filename) {
+            extension = '';
+        } else {
+            // if there is an extension, we convert to lower case
+            // (N.B. this conversion will not effect the value of the extension
+            // on the file upload.)
+            extension = extension.toLowerCase();
+        }
+
+        switch (extension) {
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+                // alert("it's got an extension which suggests it's a PNG or JPG image (but N.B. that's only its name, so let's be sure that we, say, check the mime-type server-side!)");
+                readURL(this,'#bg-view');
+                $('#bg-view').show();                
+                break;
+            // uncomment the next line to allow the form to submitted in this case:
+//          break;
+
+            case 'mp4':
+            case 'mkv':                
+                alert('Untuk Video Tidak Ditampilkan Preview');
+                // readURL(this,'#source-view-video');
+                $('#bg-view').hide();
+                // $('#source-view-video').show();
+                break;
+            default :
+            	alert('Untuk Video Tidak Ditampilkan Preview');
+            	$('#bg-view').hide();
+            	break;
+        }
 	});
 	//allPhotos
 	$('#allPhotos').click(function(){
@@ -101,7 +141,7 @@ function loadTopiks()
         async: false,
         dataType : 'JSON',
         success: function (data) {
-            console.log(data.data);
+            // console.log(data.data);
             datas = data.data;
             $('#select1').find('option').remove();
             //$('#select1').append("<option value='0'>Menu Utama</option>");
@@ -163,16 +203,36 @@ function loadKategoriesTab()
 }
 function loadAllPhotos($id)
 {	
+	ids = $('#id_node').attr('data');
 	$.ajax({
-        url: HOST+"allGalleryNode/"+$id,
+        url: HOST+"allGalleryNode/"+ids,
         type: 'GET',	        
         async: false,
         dataType : 'JSON',
         success: function (data) {
             console.log(data.data);
             datas = data.data;            
-            $('.bodyData').html("");
+            $('.bodyData').empty();
             $.each(datas, function(index) {
+            	
+            	src = datas[index].source;
+            	ext = (src.split('.')[1]);
+            	//06122017073309bg1-sm.jpg
+            	//cek 
+            	if(ext == 'jpg' || ext == 'jpeg' || ext == 'png')
+            	{
+            		src = '<a class="boxfancy" href="'+IMAGES+datas[index].source+'" data-fancybox="gallery" data-caption="'+datas[index].nama+' - '+datas[index].description+'">'+
+            				'<img src="'+IMAGES+src+'" class="img-rounded img-responsive photos">'+
+            			'</a>';
+            	}
+            	else
+            	{
+            		src = '<video class="img-responsive" width="400" controls>'+            		
+'                              <source src="'+HOST+"public/videos/"+datas[index].source+'" id="video_here">'+
+                                'Your browser does not support HTML5 video.'+
+                            '</video> </div>';
+            	}
+
             	if(index%4 == 0)
             	{
             		w100 = '<div class="clear" style="clear:both"></div>'
@@ -184,9 +244,7 @@ function loadAllPhotos($id)
             	apen = '<div class="col-md-3" id="item'+datas[index].id+'">'+
             			'<i title="Edit" class="edit photoTool fa fa-pencil-square-o" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<i title="Hapus" class="delete photoTool fa fa-trash" aria-hidden="true" data="'+datas[index].id+'"></i>'+
-            			'<a class="boxfancy" href="'+IMAGES+datas[index].source+'" data-fancybox="gallery" data-caption="'+datas[index].nama+' - '+datas[index].description+'">'+
-            				'<img src="'+IMAGES+datas[index].source+'" class="img-rounded img-responsive photos">'+
-            			'</a>'+
+            			src+
             			'</div>';
 	            $('.bodyData').append(apen);		            
 	        });
@@ -213,6 +271,7 @@ function loadImageByTabs(ids)
             datas = data.data;            
             $('.bodyData').html("");
             $.each(datas, function(index) {
+            	
             	apen = '<div class="col-md-3" id="item'+datas[index].id+'">'+
             			'<i title="Edit" class="edit photoTool fa fa-pencil-square-o" aria-hidden="true" data="'+datas[index].id+'"></i>'+
             			'<i title="Hapus" class="delete photoTool fa fa-trash" aria-hidden="true" data="'+datas[index].id+'"></i>'+

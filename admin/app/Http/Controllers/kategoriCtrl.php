@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\kategori;
+use App\galleryPhoto;
+use App\galleryVideo;
 class kategoriCtrl extends Controller
 {
     /**
@@ -114,16 +116,37 @@ class kategoriCtrl extends Controller
     }
     public function getPhotoGallery($id_topik)
     {
-        $data = kategori::with(['getPhotos' => function($q) use ($id_topik){
-            $q->where('id_topik',$id_topik);
-        }])->get();
+        //hitung getPhotoGallery
+        $query = galleryPhoto::where('id_topik',$id_topik)->get();
+        if(count($query) > 0)
+        {
+            $data = kategori::with(['getPhotos' => function($q) use ($id_topik){
+                $q->where('id_topik',$id_topik);
+            }])
+            ->withCount(['getPhotos' => function($q) use ($id_topik){
+                $q->where('id_topik',$id_topik);
+            }])        
+            ->get();
+        }
+        else
+        {
+            $data = [];
+        }
         return $data;
     }
     public function getVideoGallery($id_topik)
     {
-        $data = kategori::with(['getVideos' => function($q) use ($id_topik){
-            $q->where('id_topik',$id_topik);
-        }])->get();
+        $query = galleryVideo::where('id_topik',$id_topik)->get();
+        if(count($query) > 0)
+        {
+            $data = kategori::with(['getVideos' => function($q) use ($id_topik){
+                $q->where('id_topik',$id_topik);
+            }])->get();
+        }
+        else
+        {
+            $data = [];
+        }
         return $data;
     }
 }
